@@ -1,0 +1,206 @@
+{
+  "name": "",
+  "path_to_gallery": "",
+  "purchase_date": "",
+  "total_usage": {
+    "hours": 0,
+    "distance": 0,
+    "races": 0
+  },
+  "geometry": {
+    "top_tube": 0,
+    "reach": 0,
+    "stack": 0,
+    "seattube": 0,
+    "chainstay": 0,
+    "headtube_angle": 0,
+    "seattube_ange": 0,
+    "bb_drop": 0,
+    "bb_height": 0,
+    "wheelbase": 0,
+    "headtube": 0,
+    "standover_height": 0
+  },
+  "initial_value": {
+    "amount": 0,
+    "currency": ""
+  },
+  "components": {
+    "frame": {
+      "brand": "",
+      "model": "",
+      "year": "",
+      "size": "",
+      "boost": true
+    },
+    "shock": {
+      "band": "",
+      "model": "",
+      "length": ""
+    },
+    "fork": {
+      "band": "",
+      "model": "",
+      "travel": "",
+      "boost": true
+    },
+    "handlebars": {
+      "band": "",
+      "model": "",
+      "width": 0,
+      "diameter": 0
+    },
+    "stem": {
+      "length": 0,
+      "rise": 0,
+      "diameter": 0
+    },
+    "headset": {
+      "brand": "",
+      "model": "",
+      "standard": ""
+    },
+    "grips": {
+      "band": "",
+      "model": ""
+    },
+    "brakes": {
+      "band": "",
+      "model": "",
+      "pads": {
+        "band": "",
+        "model": "",
+        "compound": ""
+      },
+      "from_disc": {
+        "band": "",
+        "model": "",
+        "diameter": 0,
+        "centerlock": false
+      },
+      "rear_disc": {
+        "band": "",
+        "model": "",
+        "diameter": 0,
+        "centerlock": false
+      }
+    },
+    "wheels": {
+      "front": {
+        "rim": {
+          "brand": "",
+          "model": "",
+          "size": "",
+          "spoke_count": 0
+        },
+        "hub": {
+          "brand": "",
+          "model": "",
+          "boost": true
+        },
+        "tyre": {
+          "brand": "",
+          "model": "",
+          "width": 0,
+          "casing": "",
+          "compound": ""
+        }
+      },
+      "rear": {
+        "rim": {
+          "brand": "",
+          "model": "",
+          "size": "",
+          "spoke_count": 0
+        },
+        "hub": {
+          "brand": "",
+          "model": "",
+          "boost": true
+        },
+        "tyre": {
+          "brand": "",
+          "model": "",
+          "width": 0,
+          "casing": "",
+          "compound": ""
+        }
+      }
+    },
+    "bottom_bracket": {
+      "brand": "",
+      "model": "",
+      "standard": ""
+    },
+    "cranks": {
+      "brand": "",
+      "model": "",
+      "length": 0,
+      "boost": true
+    },
+    "pedals": {
+      "band": "",
+      "model": ""
+    },
+    "chainring": {
+      "band": "",
+      "model": "",
+      "tooth_number": 0,
+      "offset": 0
+    },
+    "cassette": {
+      "brand": "",
+      "model": "",
+      "range": "",
+      "speeds": 0
+    },
+    "derailleur": {
+      "brand": "",
+      "model": "",
+      "speeds": 0
+    },
+    "chain": {
+      "band": "",
+      "model": ""
+    },
+    "saddle": {
+      "band": "",
+      "model": ""
+    },
+    "seatpost": {}
+  },
+  "setup": {
+    "fork": {
+      "pressure": 0,
+      "rebound": {
+        "fast": 0,
+        "slow": 0
+      },
+      "compression": {
+        "fast": 0,
+        "slow": 0
+      }
+    },
+    "shock": {
+      "pressure": 0,
+      "rebound": {
+        "fast": 0,
+        "slow": 0
+      },
+      "compression": {
+        "fast": 0,
+        "slow": 0
+      }
+    },
+    "tyre_pressure": {
+      "units": "",
+      "front": 0,
+      "rear": 0
+    },
+    "stem_height": 0,
+    "saddle_height": 0,
+    "brake_levers_angle": 0,
+    "chainline": 0,
+    "chain_length": 0
+  }
+}
