@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block crumbs %}
+  <div class="pagetitle">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ url_for('index') }}"><h1>Home</h1></a></li>
+      </ol>
+    </nav>
+  </div>
+{% endblock %}
+
+{% block body %}
+  <div class="jumbotron index-jumbo">
+    <p class="lead">This is Work In Progress</p>
+    {% if bike_data %}
+      <h4>Working with bike:{{ bike_data }}</h4>
+    {% endif %}
+    <p class="lead">I think we could leave ideas/issues here... instead of on github ? wdyt?</p>
+    <p class="my-5"></p>
+    <ul>
+      <li><a href="https://github.com/Ladia-m/">Created by: <i class="bi bi-emoji-neutral"></i> Lodoslov Moko 2021</a></li>
+      <li><a href="https://github.com/Ladia-m/bike_garage">Github Repo:<i class="bi bi-github"></i></a></li>
+    </ul>
+    <hr class="my-4">
+  </div>
+
+
+
+  <section class="section">
+    <div class="col-lg-12">
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Select Bike
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <li><a class="dropdown-item" href="{{ url_for('bike', bike_num=1) }}">Bike 1</a></li>
+        <li><a class="dropdown-item" href="{{ url_for('bike', bike_num=2) }}">Bike 2</a></li>
+        <li><a class="dropdown-item" href="{{ url_for('bike', bike_num=3) }}">Bike 3</a></li>
+        </ul>
+        </div>
+      </div>
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Key</th>
+                  <th scope="col">Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Keyhere</td>
+                  <td>Valuehere</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+  </section>
+
+{% endblock %}
