@@ -1,6 +1,14 @@
-from flask import Flask, render_template
+from collections import namedtuple
+from flask import Flask, render_template, request
 
 bike_garage = Flask(__name__)
+
+BikeDescriptor = namedtuple("BikeDescriptor", "name color size components")
+Point = namedtuple("Point", "x y")
+Point(x=2, y=4)
+all_bikes = {
+    "1": BikeDescriptor(name='Sean', color='Red', size='22', components={'wheel_size': 22, 'frame_size': 222})
+}
 
 
 @bike_garage.route("/")
@@ -11,7 +19,7 @@ def index(bike_num=None):
 
 
 @bike_garage.route("/usage/")
-def usage(bike_num=None):
+def usage():
     chart_data = [10, 41, 35, 51, 49, 62, 69, 2, 148]
     chart_data2 = [10, 41, 52, 1, 49, 62, 69, 91, 148]
     chart_xseries = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
@@ -34,7 +42,10 @@ def usage(bike_num=None):
 
 @bike_garage.route("/components/")
 def components():
-    return render_template("components.html")
+    bike_num = request.args.get('bike_num')
+    if not bike_num or bike_num not in all_bikes:
+        return render_template("components.html")
+    return render_template("components.html", component_data=all_bikes[bike_num].components)
 
 
 @bike_garage.route("/setup/")

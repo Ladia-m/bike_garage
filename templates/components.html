@@ -26,10 +26,14 @@
                   </tr>
                 </thead>
                 <tbody>
+                {% if component_data %}
+                {% for k, v in component_data.items() %}
                   <tr>
-                    <td>Keyhere</td>
-                    <td>Valuehere</td>
+                    <td>{{ k }}</td>
+                    <td>{{ v }}</td>
                   </tr>
+                {% endfor %}
+                {% endif %}
                 </tbody>
               </table>
             </div>
