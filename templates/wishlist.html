@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block crumbs %}
+  <a href="{{ url_for('wishlist') }}"><h1>Wishlist</h1></a>
+{% endblock %}
+
+{% block bike_values %}
+  <li><a class="dropdown-item" href="{{ url_for('wishlist', bike_num=1) }}">Bike 1</a></li>
+  <li><a class="dropdown-item" href="{{ url_for('wishlist', bike_num=2) }}">Bike 2</a></li>
+  <li><a class="dropdown-item" href="{{ url_for('wishlist', bike_num=3) }}">Bike 3</a></li>
+{% endblock %}
+
+{% block body %}
+  <div class="jumbotron index-jumbo">
+    <h1>Wishlist: work in progress</h1>
+  </div>
+{% endblock %}
