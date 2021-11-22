@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block crumbs %}
-<div class="pagetitle">
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{ url_for('usage') }}"><h1>Usage</h1></a></li>
-    </ol>
-  </nav>
-</div>
+  <a href="{{ url_for('usage') }}"><h1>Usage</h1></a>
+{% endblock %}
+
+{% block bike_values %}
+  <li><a class="dropdown-item" href="{{ url_for('usage', bike_num=1) }}">Bike 1</a></li>
+  <li><a class="dropdown-item" href="{{ url_for('usage', bike_num=2) }}">Bike 2</a></li>
+  <li><a class="dropdown-item" href="{{ url_for('usage', bike_num=3) }}">Bike 3</a></li>
 {% endblock %}
 
 
@@ -25,8 +25,27 @@
   </div>
 </div>
 
-TODO:Chart object Here (matplotlib?)
-<canvas class="my-4 w-100" id="myChart" width="800" height="30"></canvas>
+<section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Line Chart</h5>
+              <div id="usageChart1"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Line Chart</h5>
+              <div id="usageChart2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
 <hr class="my-4">
 <h2>Rides</h2>
 <div class="table-responsive">
@@ -47,4 +66,73 @@ TODO:Chart object Here (matplotlib?)
     </tbody>
   </table>
 </div>
+{% endblock %}
+
+{% block pagescripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    new ApexCharts(document.querySelector("#usageChart1"), {
+      series: [{
+        name: "Desktops",
+        data: {{ chart_data|safe }}
+      }],
+      chart: {
+        height: 350,
+        type: 'line',
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      stroke: {
+        curve: 'straight'
+      },
+      grid: {
+        row: {
+          colors: ['#f3f3f3', 'transparent'],
+          opacity: 0.5
+        },
+      },
+      xaxis: {
+        categories: {{ chart_xseries|safe }},
+      }
+    }).render();
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    new ApexCharts(document.querySelector("#usageChart2"), {
+      series: [{
+        name: "Desktops",
+        data: {{ chart_data2|safe }}
+      }],
+      chart: {
+        height: 350,
+        type: 'line',
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: true
+      },
+      stroke: {
+        curve: 'straight'
+      },
+      grid: {
+        row: {
+          colors: ['#f3f3f3', 'transparent'],
+          opacity: 0.5
+        },
+      },
+      xaxis: {
+        categories: {{ chart_xseries|safe }},
+      }
+    }).render();
+  });
+</script>
+
 {% endblock %}

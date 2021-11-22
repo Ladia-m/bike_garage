@@ -45,7 +45,6 @@
             <span>Usage</span>
           </a>
         </li>
-      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ url_for('components') }}">
           <i class="bi bi-grid"></i>
@@ -53,13 +52,13 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ url_for('setup') }}">
           <i class="bi bi-grid"></i>
           <span>Bike setup</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ url_for('wishlist') }}">
           <i class="bi bi-grid"></i>
           <span>Wishlist</span>
         </a>
@@ -68,25 +67,45 @@
   </aside>
   <main id="main" class="main">
 
-  {% block crumbs %}
-  {% endblock %}
+    <div class="pagetitle">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+<!--TODO: document each of these blocks and whats expected in the template override-->
+          {% block crumbs %}
+          {% endblock %}
+          </li>
+        </ol>
+      </nav>
+    </div>
+    {% block bike_dropdown %}
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          Select Bike
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        {% block bike_values %}
+        {% endblock %}
+        </ul>
+      </div>
+    </div>
+    {% endblock %}
 
-  {% block body %}
-  {% endblock %}
+    {% block body %}
+    {% endblock %}
 
   </main>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
   <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
   <script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
   <script src="{{ url_for('static', filename='assets/vendor/quill/quill.min.js') }}"></script>
   <script src="{{ url_for('static', filename='assets/vendor/tinymce/tinymce.min.js') }}"></script>
   <script src="{{ url_for('static', filename='assets/vendor/simple-datatables/simple-datatables.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/vendor/chart.js/chart.min.js') }}"></script>
   <script src="{{ url_for('static', filename='assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
-  <script src="{{ url_for('static', filename='assets/vendor/echarts/echarts.min.js') }}"></script>
   <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
 
-
+{% block pagescripts %}
+{% endblock %}
 </body>
 </html>

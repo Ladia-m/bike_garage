@@ -2,13 +2,10 @@
 
 
 {% block crumbs %}
-  <div class="pagetitle">
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url_for('index') }}"><h1>Home</h1></a></li>
-      </ol>
-    </nav>
-  </div>
+  <a href="{{ url_for('index') }}"><h1>Home</h1></a>
+{% endblock %}
+
+{% block bike_dropdown %}
 {% endblock %}
 
 {% block body %}
@@ -27,41 +24,27 @@
   </div>
 
 
-
   <section class="section">
     <div class="col-lg-12">
-      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <div class="btn-group" role="group">
-        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Select Bike
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        <li><a class="dropdown-item" href="{{ url_for('bike', bike_num=1) }}">Bike 1</a></li>
-        <li><a class="dropdown-item" href="{{ url_for('bike', bike_num=2) }}">Bike 2</a></li>
-        <li><a class="dropdown-item" href="{{ url_for('bike', bike_num=3) }}">Bike 3</a></li>
-        </ul>
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Key</th>
+                <th scope="col">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Keyhere</td>
+                <td>Valuehere</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-        <div class="card">
-          <div class="card-body">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Key</th>
-                  <th scope="col">Value</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Keyhere</td>
-                  <td>Valuehere</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
-
   </section>
 
 {% endblock %}

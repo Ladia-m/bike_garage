@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 
 {% block crumbs %}
-  <div class="pagetitle">
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ url_for('components') }}"><h1>Components</h1></a></li>
-      </ol>
-    </nav>
-  </div>
+  <a href="{{ url_for('components') }}"><h1>Components</h1></a>
 {% endblock %}
+
+{% block bike_values %}
+  <li><a class="dropdown-item" href="{{ url_for('components', bike_num=1) }}">Bike 1</a></li>
+  <li><a class="dropdown-item" href="{{ url_for('components', bike_num=2) }}">Bike 2</a></li>
+  <li><a class="dropdown-item" href="{{ url_for('components', bike_num=3) }}">Bike 3</a></li>
+{% endblock %}
+
 
 
 {% block body %}
@@ -25,10 +26,14 @@
                   </tr>
                 </thead>
                 <tbody>
+                {% if component_data %}
+                {% for k, v in component_data.items() %}
                   <tr>
-                    <td>Keyhere</td>
-                    <td>Valuehere</td>
+                    <td>{{ k }}</td>
+                    <td>{{ v }}</td>
                   </tr>
+                {% endfor %}
+                {% endif %}
                 </tbody>
               </table>
             </div>
