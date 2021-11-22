@@ -15,7 +15,6 @@ def bike(bike_num=1):
     return render_template('index.html', bike_data=bike_num)
 
 
-
 @bike_garage.route("/usage")
 def usage():
     ride_data = {
