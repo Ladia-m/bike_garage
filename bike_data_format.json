@@ -34,18 +34,18 @@
       "boost": true
     },
     "shock": {
-      "band": "",
+      "brand": "",
       "model": "",
       "length": ""
     },
     "fork": {
-      "band": "",
+      "brand": "",
       "model": "",
       "travel": "",
       "boost": true
     },
     "handlebars": {
-      "band": "",
+      "brand": "",
       "model": "",
       "width": 0,
       "diameter": 0
@@ -61,25 +61,25 @@
       "standard": ""
     },
     "grips": {
-      "band": "",
+      "brand": "",
       "model": ""
     },
     "brakes": {
-      "band": "",
+      "brand": "",
       "model": "",
       "pads": {
-        "band": "",
+        "brand": "",
         "model": "",
         "compound": ""
       },
       "from_disc": {
-        "band": "",
+        "brand": "",
         "model": "",
         "diameter": 0,
         "centerlock": false
       },
       "rear_disc": {
-        "band": "",
+        "brand": "",
         "model": "",
         "diameter": 0,
         "centerlock": false
@@ -90,12 +90,13 @@
         "rim": {
           "brand": "",
           "model": "",
-          "size": "",
+          "diameter": "",
           "spoke_count": 0
         },
         "hub": {
           "brand": "",
           "model": "",
+          "holes_count": 0,
           "boost": true
         },
         "tyre": {
@@ -123,7 +124,8 @@
           "model": "",
           "width": 0,
           "casing": "",
-          "compound": ""
+          "compound": "",
+          "diameter": 0
         }
       }
     },
@@ -139,11 +141,11 @@
       "boost": true
     },
     "pedals": {
-      "band": "",
+      "brand": "",
       "model": ""
     },
     "chainring": {
-      "band": "",
+      "brand": "",
       "model": "",
       "tooth_number": 0,
       "offset": 0
@@ -160,14 +162,21 @@
       "speeds": 0
     },
     "chain": {
-      "band": "",
-      "model": ""
+      "brand": "",
+      "model": "",
+      "speeds_compatibility": 0
     },
     "saddle": {
-      "band": "",
+      "brand": "",
       "model": ""
     },
-    "seatpost": {}
+    "seatpost": {
+      "brand": "",
+      "model": "",
+      "telescopic": false,
+      "diameter": 0,
+      "travel": 0
+    }
   },
   "setup": {
     "fork": {
@@ -185,11 +194,11 @@
       "pressure": 0,
       "rebound": {
         "fast": 0,
-        "slow": 0
+        "low": 0
       },
       "compression": {
         "fast": 0,
-        "slow": 0
+        "low": 0
       }
     },
     "tyre_pressure": {

@@ -18,7 +18,7 @@ def index(bike_num=None):
                            bike_data=bike_num)
 
 
-@bike_garage.route("/usage/")
+@bike_garage.route("/usage")
 def usage():
     chart_data = [10, 41, 35, 51, 49, 62, 69, 2, 148]
     chart_data2 = [10, 41, 52, 1, 49, 62, 69, 91, 148]
