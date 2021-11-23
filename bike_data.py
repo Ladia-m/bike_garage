@@ -100,8 +100,8 @@ class Grips(Component):
 
 @dataclass
 class BreakDisc(Component):
-    diameter: int
     centerlock: bool
+    diameter: int
 
     @property
     def diameter(self):
@@ -145,8 +145,8 @@ def wheel_diameter_check(value):
 
 @dataclass
 class Rim(Component):
-    diameter: str
     spoke_count: int
+    diameter: str
 
     @property
     def diameter(self):
@@ -316,7 +316,10 @@ class BikeSetup:
 
 @dataclass
 class Bike:
-    name: str
+    users_name: str
+    brand: str
+    model: str
+    model_year: int
     purchase_date: datetime.time
     total_usage: Usage
     initial_value = {int, str}  # {value, currency}
