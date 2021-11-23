@@ -1,0 +1,1446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--[if lt IE 7 ]> <html class="mtb ie6" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<!--[if IE 7 ]> <html class="mtb ie7" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<!--[if IE 8 ]> <html class="mtb ie8" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<!--[if IE 9 ]> <html class="mtb ie9" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="mtb" xmlns:fb="http://ogp.me/ns/fb#" xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta name="referrer" content="unsafe-url">
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="BR4nATpw4TG54qM82+3DmLj85uLE0pT5Gcrv5J+wxg1+foQseOMUhQATO4LPU4mvKwZDhW5aVuPlSaiOXwvYJg==" />
+<!--[if lte IE 8]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+<![endif]-->
+<link href="https://assets.vitalmedianet.com/images/_mtb/fav.ico" rel="shortcut icon" /> 
+
+<title>Vital MTB</title>
+<meta name="description" content="" />
+<meta name="keywords" content="Mountain Bikes, Mountain Biking, Downhill, Freeride" />
+
+
+<script src="/partials/user.js?following_url=search&notif_id="></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="//assets.vitalmedianet.com/javascripts/jquery-libs.vital.min.js"></script>
+<script src="/assets/jquery.jsonify-0.3.2.min-fe9295d328a4d5bde9cbeb3b343ee59b70f7f86487a4c68c3eede9c268d9595e.js"></script>
+<script src="/assets/isMobile-90c8aeb04bddde945935dd65437a09f04e3e42c7bbdf22b1618f6a0b6f1ad13e.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+  var isDST = false;
+  $j = jQuery.noConflict();
+  $j.vitalOptions = {
+    userCardAutoPopup: 'on'
+  }
+</script>
+<script type="text/javascript">
+
+  //New Tactical Generator
+
+  var blasterGen = makeBlasterGen(10);
+  var blasterGenWrap = makeBlasterGen(15);
+  var blasterScroll = makeBlasterGen(12);
+
+  function makeBlasterGen(amnt) {
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+      for( var i=0; i < amnt; i++ )
+          text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
+  }
+
+  //alert('Blaster Gen: '+blasterGen+' Blaster Wrapper: '+blasterGenWrap);
+
+  var vital_request_num = "";
+  var aba_json_url = "";
+
+  $j(document).ready(function() {
+    $j('*[data-buster="busted"]').addClass(blasterGen).removeAttr('data-buster');
+    $j('*[data-buster="busterWrap"]').addClass(blasterGenWrap).removeAttr('data-buster');
+    $j('*[data-scroll-buster="true"]').attr('id', blasterScroll).removeAttr('data-scroll-buster');
+
+    $j("<style> \
+    ."+blasterGenWrap+"{ \
+      position: relative; \
+      visibility: visible !important; \
+      display: block !important; \
+    } \
+    ."+blasterGen+"{ \
+      position: absolute; \
+      top: 0; \
+      left: 0; \
+      width: 100%; \
+      height: 100%; \
+      visibility: visible !important; \
+      display: block !important; \
+    } \
+     \
+    a."+blasterGen+", \
+    a."+blasterGen+":hover{ \
+      background-color: transparent !important; \
+    } \
+     \
+    ."+blasterGenWrap+" div{ \
+      z-index: 10; \
+      position: relative; \
+    } \
+     \
+    ."+blasterGenWrap+" a{ \
+      z-index: 5; \
+    } \
+     \
+    #view_home .sidebar ."+blasterGenWrap+":first-child{ \
+      height: 600px; \
+      width: 300px; \
+      visibility: visible !important; \
+      display: block !important; \
+    } \
+     \
+    #view_home .sidebar ."+blasterGenWrap+":first-child{ \
+      height: 600px; \
+      width: 300px; \
+      visibility: visible !important; \
+      display: block !important; \
+    }\
+    \
+    .sidebar #"+blasterScroll+"{margin-bottom:0} \
+    .sidebar #"+blasterScroll+" + .item{margin-top:15px} \
+    .advancedEditor .sidebar #"+blasterScroll+"{ \
+      top: 0 !important; \
+    }    \
+    .advancedEditor #"+blasterScroll+" iframe{ \
+      height: 1px; \
+      width: 1px; \
+      overflow: hidden; \
+    } \
+    \
+    #"+blasterScroll+"{ \
+      height: 600px; \
+      width: 300px; \
+      visibility: visible !important; \
+      display: block !important; \
+    } \
+    \
+    #view_home #spb-items #aba-hp-spotlights1."+blasterGenWrap+"{\
+      text-align:center;\
+      min-height: 90px;\
+    }\
+    #view_home #spb-items #aba-hp-spotlights2."+blasterGenWrap+"{\
+      text-align:center;\
+      min-height: 90px;\
+    }\
+    #view_home #spb-items #aba-hp-spotlights3."+blasterGenWrap+"{\
+      text-align:center;\
+      min-height: 90px;\
+    }\
+    \
+  #view_home #spb-items ."+blasterGenWrap+" div{ \
+    visibility: visible !important; \
+    display: block !important; \
+    min-height:0px;\
+    min-width:0px;\
+    padding:0px;\
+    margin:0px auto;\
+    left:30px;\
+    position:absolute;\
+  }\
+    </style>").appendTo( "head" );        
+
+    $j.get('/partials/vital_routes', function(vrdata) {
+      if(typeof(vrdata['vital_request_num']) != 'undefined') {
+        vital_request_num = vrdata.vital_request_num;
+        aba_json_url = vrdata.abaroute;
+
+
+        <!---Indep AB Check--->
+        $j(document).ready(function() {
+          var abActive = window.justDetectAdblock == undefined;
+          if (window.justDetectAdblock){
+            justDetectAdblock.detectAnyAdblocker().then(function(detected) {
+              abActive = detected;
+            });
+          }
+          setTimeout(function(){
+            if (abActive && !window.abvRequested){
+              abvRequested = true;
+              $j.getScript(vrdata.abalibroute);
+              $j.post(vrdata['abvroute']+"?rn=" + vital_request_num, function() {});
+            }
+          }, 500);
+        });
+      }
+    });
+
+  });
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0.beta2/handlebars.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.1/underscore-min.js"></script>
+<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+<link rel="stylesheet" media="screen" href="/assets/fancybox/jquery.fancybox-1.3.1-8895caf0aa4e59a19c89bb46661a8edc655746142b25d96e613d8fcf1bedf17b.css" />
+<link rel="stylesheet" media="screen" href="/assets/fancybox/jquery.fancybox-patch-2cfb4655d4805e6208a7cc7603722e81082914aa88df265bb155364ce4b35854.css" />
+<script src="/assets/fancybox/jquery.fancybox-1.3.1-8ac5a0fd8585d7aaf57bda0383f6f9337acb2f3469e3ea703cb4a4b17f89d7f9.js"></script>
+<script type="text/javascript">
+  var affanLoaded = false;
+  function runAffanSuccess() {
+    console.log('Affan Loaded');
+    affanLoaded = true;
+    Affan.host = "https://affan.vitalmtb.com";
+    Affan.ga_account = 'UA-561000-41';
+  }
+</script>
+<script src="https://affan.vitalmtb.com/assets/application.js?1570792145" onload="runAffanSuccess()"></script>
+
+
+<script id="funnel-relay-installer" data-property-id="PROPERTY_ID" data-customer-id="vitalmedia_a5d51_mtb" src="https://cdn-magiclinks.trackonomics.net/client/static/v2/vitalmedia_a5d51_mtb.js" async="async"></script>
+
+
+
+<script src="/assets/vital.apps-6fe79ca7d19d9083fd8d58742a860b3a80f2e446738de9c071b45bed5726987a.js"></script>
+<script src="/assets/jquery_ujs-512c970520d9c352391eb00c084b8720bd8fba10a952fb843240010ebb831751.js"></script>
+<script src="/assets/jquery.role-5673411849faaa33412286d49f1ab7faaf5c5213efc3d338a0eed731fcfa56ba.js"></script>
+<script src="/assets/arrive.min-8e3207af6192c397e7075307cc5cb1a907d05f0488c77c2cc08af699806b58c6.js"></script>
+<script src="/assets/toe/toe.min-ae79c5c3ea8241b4c4ec3c657c8ca67e14854b91171d1fa355b9591e61263ad0.js"></script>
+<script src="/assets/URI-bd6c2a7a74a99f40a06d2b7effe3b76a51f558dc287d382e4b0033e0df3d269f.js"></script>
+<script src="/assets/moment-fb2b01d98d41a4ae74906d614f8484f1adbcf375f31eb98540d4ccf9aaad107a.js"></script>
+<script src="/assets/moment-timezone-with-data.min-c8662dff09617d4a06d317c3f65578d42582db61215dd54a789eda198b19c507.js"></script>
+
+<link rel="stylesheet" media="screen" href="/assets/password_strength-7c8f8101d8d51bdceea59c47f9ec68bf471b882ab7dc8f8ed864e3b2c45c9470.css" />
+<script src="/assets/password_strength-7683a34a82921fd21bfc03cf9c4ad536b76396bc7e94dde432e8e1629573936f.js"></script>
+
+<script>
+//<![CDATA[
+
+$j(document).ajaxSend(function(e, xhr, options) {
+  var token = $j("meta[name='csrf-token']").attr("content");
+  xhr.setRequestHeader("X-CSRF-Token", token);
+});  
+
+//]]>
+</script>
+<script type="text/javascript" charset="utf-8">
+if (window.location.pathname == '/') {
+    var float_ad = false;
+}
+
+function async_load(script_url){
+    var protocol = ('https:' == document.location.protocol ? 'https://' : 'http://');
+    var s = document.createElement('script'); s.src = protocol + script_url;
+    var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+}
+bm_website_code = '53CD845063A247D3';
+//$j(document).ready(function(){async_load('asset.pagefair.com/measure.min.js')});
+//$j(document).ready(function(){async_load('asset.pagefair.net/ads.min.js')});
+</script>
+
+<script type="text/javascript">
+window.fbAsyncInit = function() {
+
+  FB.Event.subscribe('edge.create', function(targetUrl) {
+    __gaTracker('__gaTracker_www.send', 'social', 'facebook', 'like', targetUrl);
+    __gaTracker('__gaTracker_onsite.send', 'social', 'facebook', 'like', targetUrl);
+  });
+  FB.Event.subscribe('edge.remove', function(targetUrl) {
+    __gaTracker('__gaTracker_www.send', 'social', 'facebook', 'unlike', targetUrl);
+    __gaTracker('__gaTracker_onsite.send', 'social', 'facebook', 'unlike', targetUrl);
+  });
+  FB.Event.subscribe('message.send', function(targetUrl) {
+    __gaTracker('__gaTracker_www.send', 'social', 'facebook', 'share', targetUrl);
+    __gaTracker('__gaTracker_onsite.send', 'social', 'facebook', 'share', targetUrl);
+  });
+
+}  
+</script>
+
+<script type="text/javascript">
+$j(document).ready(function() {  
+  setInterval(function() {
+    $j('.'+blasterGenWrap+'').not('#wpadWrapper .'+blasterGenWrap+'').parents().each(function() {
+      if( $j(this).css('display') == 'none' ){
+        $j(this).addClass('triggerHide');
+      } else {
+        $j(this).removeClass('triggerHide');
+      }
+    });
+  }, 1000);
+});
+
+var isBlocked = 0;
+var checkItt = 0;
+var beenHidden = 0;
+
+/*Responsive Video Embeds*/
+$j(document).ready(function() {
+  $j('.content_inner iframe, .content_inner embed').not('.videoDesc iframe, .videoDesc embed, #video_detail_view iframe, #video_detail_view embed, .playerWrapper iframe, .playerWrapper embed').each(function() {
+    thisSrc = $j(this).attr('src');
+    if ( 
+      thisSrc && (thisSrc.indexOf('youtube') !== -1 || 
+      thisSrc.indexOf('vimeo') !== -1 ||
+      thisSrc.indexOf('redbull.com') !== -1 || 
+      (thisSrc.indexOf('vital') !== -1 && thisSrc.indexOf('/v/') !== -1) ||
+      (thisSrc.indexOf('vital') !== -1 && thisSrc.indexOf('/video_frame_sources/') !== -1)
+    ) ) {
+      $j(this).wrap('<div class="playerWrapper"></div>');
+    }
+  });
+
+  //Iframe Fullscreen
+  $j('.content_inner iframe').each(function() {
+    console.log($j(this).attr('src'));
+    var attr = $j(this).attr('allowfullscreen');    
+    if (attr == false || attr == '' || !attr) {        
+        thisSrc = $j(this).attr('src');
+        if( thisSrc && (thisSrc.indexOf('youtube') !== -1 || 
+          thisSrc.indexOf('vimeo') !== -1 ||
+          thisSrc.indexOf('redbull.com') !== -1 || 
+          (thisSrc.indexOf('vital') !== -1 && thisSrc.indexOf('/v/') !== -1) || (thisSrc.indexOf('vital') !== -1 && thisSrc.indexOf('/video_frame_sources/') !== -1)) ) {
+          $j(this).attr('allowfullscreen','true');
+        }
+    }
+  });
+});
+
+function sortRespVideoPerspective() {
+  $j('.playerWrapper iframe, .playerWrapper embed').each(function() {
+    origWidth = $j(this).attr('width');
+    origHeight = $j(this).attr('height');
+    if(origWidth){
+      newPadding = (origHeight / origWidth)*100;
+      $j(this).parents('.playerWrapper').css('padding-top','0').css('padding-bottom', newPadding+'%');
+    }
+  });
+}
+$j(window).load(function() { sortRespVideoPerspective(); });
+
+/*Body Length on Video Edit*/
+$j(document).ready(function() {
+  var bodyID = $j('body').attr('id');
+  if( bodyID == 'view_video_new' || bodyID == 'edit_video_uploads' || bodyID == 'edit_video_embeds' || bodyID == 'new_video_embeds' || bodyID == 'new_video_uploads' ){
+     bodyLengthFix();
+     $j(window).resize(function() {
+        bodyLengthFix();
+     });
+     setInterval(function() {
+       bodyLengthFix();
+     }, 500);
+  }
+});
+
+function bodyLengthFix() {
+  $j('.content').css('min-height', '0px');
+
+  contentHeight = $j('#container').outerHeight(true) + $j('#container').offset().top;
+  windowHeight = $j(window).height();
+
+  if(contentHeight < windowHeight){
+    contentMinHeight = windowHeight - $j('.content').offset().top - $j('#footer').outerHeight(true);
+    $j('.content').css('min-height', contentMinHeight);
+  }
+
+  $j('#wpadWrapper, #wpadContainer').css('height', $j('#container').height());
+}
+
+/*Responsive Wallpaper Ads Fix*/
+function responsiveWallpaperAds() {
+  if (navigator.userAgent && navigator.userAgent.match(/(iphone|ipad)/gi) && $j('#wpadWrapper')){
+
+  } else {
+    wpadTop = $j('#container').offset().top;
+    $j('#wpadWrapper').css('top', wpadTop);
+    vitalPage.showWallpaperAd();
+  }
+}
+$j(document).ready(function() { responsiveWallpaperAds(); });
+$j(window).resize(function() { responsiveWallpaperAds(); });
+
+//Slideshow Embeds
+var cbVal = new Date().getUTCMilliseconds();
+function slideshowEmbeds() {
+  countSlideshows = $j('div[data-target="slideshow"]').length;
+  if (countSlideshows > 0){
+    $j('head').append('<link rel="stylesheet" type="text/css" href="/assets/mediaelement/mediaelementplayer.min.css?body=1&cb='+cbVal+'">');
+    $j('head').append('<link rel="stylesheet" type="text/css" href="/assets/mediaelement/mediaelementplayer-patch.css?body=1&cb='+cbVal+'">');
+    $j('head').append('<link rel="stylesheet" type="text/css" href="/assets/mediaelement/mediaelementplayer-mobile.css?body=1&cb='+cbVal+'">');
+    $j('head').append('<link rel="stylesheet" type="text/css" href="/assets/slideshow/mobile.MTB/style.css?body=1&cb='+cbVal+'">');
+    $j('head').append('<link rel="stylesheet" type="text/css" href="/assets/slideshow/mobile.MTB/plugin/vital_mobile.css?body=1&cb='+cbVal+'">');
+
+    $j.getScript( "https://s0.2mdn.net/instream/html5/ima3.js?body=1&cb="+cbVal, function(data, status, jqxhr) {
+    $j.getScript( "/assets/mediaelement/mediaelement-and-player.js?body=1&cb="+cbVal, function(data, status, jqxhr) {
+    $j.getScript( "/assets/mediaelement/fullscreen-api.js?body=1&cb="+cbVal, function(data, status, jqxhr) {
+    $j.getScript( "/assets/mediaelement/mep-feature-google-ima.js?body=1&cb="+cbVal, function(data, status, jqxhr) {
+    $j.getScript( "/assets/slideshow/mobile.MTB/plugin/vital.js?body=1&cb="+cbVal, function(data, status, jqxhr) {
+      $j('div[data-target="slideshow"]').each(function() {
+        thisXML = $j(this).attr('data-xml-url');
+        thisPreroll = $j(this).attr('data-preroll-url');
+        $j(this).vitalSlideshow({
+          adTagUrl: thisPreroll,
+          xmlURL: thisXML,
+          theme: "mtb",
+          volume: 0.5
+        });        
+      });
+    });  });  });  });  });  
+
+  }
+}
+
+var slideshowCounter = 0;
+var totalSlideshows = 0;
+
+function sizeSlideshow(thisSlideshow) {
+  thisSlideshow.addClass('sizingIsWorking');
+  thisSlideshow.width('100%');
+  thisSlideshow.height(thisSlideshow.width() * 0.666667);
+}
+
+function replaceSlideshowIframes() {
+
+  // Store URLs in reverse order to prevent Google Crawler false detections.
+  String.prototype.reverse = function() { return this.split('').reverse().join(''); };
+  var iframe_finder = [ "iframe[src*='", window.location.host, "/slideshow_frame_sources/", "']" ].reverse().map(function(x) { return x.reverse() }).join('')
+
+  totalSlideshows = $j(iframe_finder.reverse()).length;
+
+  $j(iframe_finder.reverse()).each(function () {
+      slideshowCounter++;
+      thisSrc = $j(this).attr('src');
+
+      var match = thisSrc.match(/slideshow_frame_sources\/(\d+)/);
+      if (match) {        
+
+        if($j(this).parent().hasClass('playerWrapper')){
+          console.log('unwrapping');
+          $j(this).unwrap();
+        }
+
+        $j(this).wrap('<div class="slideshowWrapper"></div>');
+
+        $j(this).replaceWith(replacement_code[match[1]]);
+      }
+
+      thisSlideshow = $j(this);
+      sizeSlideshow(thisSlideshow);
+
+      if(slideshowCounter === totalSlideshows){
+        slideshowEmbeds();
+      }
+  });
+}
+
+$j(document).ready(function() { 
+
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+     replaceSlideshowIframes();
+
+     $j(window).resize(function() {
+       $j('div[data-target="slideshow"]').each(function() {
+         thisSlideshow = $j(this);
+         sizeSlideshow(thisSlideshow);
+       });
+     });
+  }
+
+});
+
+//Allow Vital Embeds Fullscreen
+$j(document).ready(function() {
+  $j('iframe').each(function() {
+    thisSrc = $j(this).attr('src');
+    if(thisSrc && thisSrc.indexOf('vital') !== -1){
+      $j(this).attr('allowfullscreen','true').attr('webkitallowfullscreen','true').attr('mozallowfullscreen','true');
+    }
+  });
+});
+
+
+//ABA Interstitial Variables
+var intCookie1 = '';
+var intCookie2 = '';
+
+function sponsoredPopup() {
+  $j('body').append('<div class="sponsoredOuter"><div class="sponsoredPop cf"></div><div class="sponsoredBg"></div></div>')
+  thisPop = $j('.sponsoredPop');
+  thisPop.append('<div><img src="/assets/mtb_popup_sponsored_posts.jpg"></div>');
+  thisPop.append('<div class="mainContent"></div>');
+  thisPop.append('<i class="fa fa-times closeThis"></i>');
+  thisPop.find('.mainContent').append('<h2>Sponsored Posts</h2>');
+  thisPop.find('.mainContent').append('<ul><li>Get more exposure for your content on the Vital homepage</li><li>Any content can be promoted: your products in the product guide, videos, user product reviews, slideshows, bike checks, Vital product reviews, etc.</li><li>Your post will be stickied at top of our homepage newsfeed for 12 hours</li><li>Price is $250</li><li><a target="_blank" href="mailto:ttoth@vitalmedianet.com">Contact us for availability</a></li></ul>');
+  //Close Functs
+  $j('.sponsoredBg, .sponsoredPop .closeThis').click(function() {
+    $j('.sponsoredOuter').remove();
+  });
+}
+
+//Bot Check
+var allowAdvFuncts = "false";
+$j(window).scroll(function() { allowAdvFuncts = true });
+$j(window).resize(function() { allowAdvFuncts = true });
+//$j('body').click(function() { allowAdvFuncts = true }); -- Triggers false positives
+$j('body').hover(function() { allowAdvFuncts = true });
+$j('body').focus(function() { allowAdvFuncts = true });
+$j('body').bind('touchstart', function() { allowAdvFuncts = true });
+$j(document).keydown(function() { allowAdvFuncts = true });
+$j(document).mousedown(function() { allowAdvFuncts = true });
+$j(document).mousemove(function() { allowAdvFuncts = true });
+$j(document).mouseleave(function() { allowAdvFuncts = true });
+</script>
+
+<script>
+/*Re-stack Most Popular*/
+function reStackMostPopular() {
+  if( $j('.footer_big_feature').width() > 1400 ){
+    $j('.footer_big_feature').addClass('stack4');
+  } else {
+    $j('.footer_big_feature').removeClass('stack4');
+  }
+}
+$j(document).ready(function() { reStackMostPopular() });
+$j(window).load(function() { reStackMostPopular() });
+$j(window).resize(function() { reStackMostPopular() });
+</script>
+
+<script src="/partials/user_j.js?following_url=search&notif_id="></script>
+<link rel="stylesheet" media="screen" href="/assets/120111_main.min-97227205a6357f03fec8c4c9d2dddac57e5f6cdfa3386a0039e0a5fa06a3df9d.css" />
+<!--[if IE]><link rel="stylesheet" media="screen" href="/assets/ie-2526d87fc9eb8ce66ab728e4f57c5b2b528a4ad3a78358a1b21e92d8d1c5c2f6.css" /><![endif]-->
+<link rel="stylesheet" media="screen" href="/assets/120305_comments.min-99e533b9579b8ed0782e22b598001565176976188d10e395aa18b4932fa264a9.css" />
+<link rel="stylesheet" media="screen" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" media="screen" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
+<link rel="stylesheet" media="screen" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css" />
+<link rel="stylesheet" media="screen" href="/assets/vital.search-c0f4c977004423265a885f8f6cd508a6a2a086b78a8035c12609a23d7f4c5de3.css" />
+<link rel="stylesheet" media="screen" href="/assets/vital.cookie-override-1941469b3252ba6cf28e05b153b536b857452357e8e169f08c4def757ad8b144.css" />
+
+
+<script src="/assets/vital.offensive-7ec915a009fa4e069a20726fcdbc3a7bf0f54f6d0a32f5618588c629c1e16d04.js"></script>
+
+
+
+
+<link rel="stylesheet" media="screen" href="/assets/111221_mtb-5b8b222b6cbe6e49f1bf3759fc3d93e245ba4a60f6d6c70a647d3d431831fc7e.css" />
+
+
+<link href="https://plus.google.com/104753134562655402798" rel="publisher" />
+<script type="text/javascript">
+window.___gcfg = {lang: 'en'};
+(function() 
+{var po = document.createElement("script");
+po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(po, s);
+})();</script>
+
+<script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+
+<meta property="fb:app_id" content="119061684797208" />
+<meta property="og:site_name" content="Vital MTB" />
+<meta property="og:image" content="https://assets.vitalmedianet.com/images/_mtb/logo_fb_968.png" />
+<meta name="thumbnail" content="https://assets.vitalmedianet.com/images/_mtb/logo_fb_968.png" />
+
+  <meta property="og:type" content="article" />
+
+
+
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@VitalMTB">
+
+<script type="text/javascript"> 
+var addthis_share = { templates: { twitter: "{{title}} | @VitalMTB {{url}}" } }
+var addthis_config = { 
+  ui_cobrand: "VitalMTB",
+  data_ga_property: 'UA-561000-15',
+  data_track_clickback: true
+};
+</script>
+
+
+
+<script type="text/javascript">
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+
+
+<script type="text/javascript"> 
+  googletag.cmd.push(function() {
+      googletag.defineSlot("/1007152/MTB_desktop_homepage_top", [728, 90], "MTB_desktop_homepage_top").addService(googletag.pubads());
+      googletag.defineSlot("/1007152/MTB_desktop_homepage_bottom", [[300, 250], [336, 280], [728, 90], [728, 300]], "MTB_desktop_homepage_bottom").addService(googletag.pubads());
+      googletag.defineSlot("/1007152/MTB_desktop_search_main_side", [300, 600], "MTB_desktop_search_main_side").addService(googletag.pubads());
+    googletag.defineSlot("/1007152/MTB_desktop_wallpaper_left", [700, 1920], "MTB_desktop_wallpaper_left").addService(googletag.pubads());
+    googletag.defineSlot("/1007152/MTB_desktop_wallpaper_right", [700, 1921], "MTB_desktop_wallpaper_right").addService(googletag.pubads());
+
+
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().collapseEmptyDivs();
+    googletag.enableServices();
+  });
+</script>
+
+<meta name="TestOne">
+
+<meta name="TestTwo">
+
+<!-- Google Analytics -->
+<script>
+//Set GA Page Type Custom Dimension
+
+var gaPageType = "Other";
+var gaPageTypeDimension = "dimension5";
+</script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+__gaTracker('create', 'UA-561000-15', 'auto');
+__gaTracker('create', 'UA-561000-15', 'auto', '__gaTracker_www');
+__gaTracker('create', 'UA-561000-18', 'auto', '__gaTracker_mobile');
+__gaTracker('create', 'UA-561000-17', 'auto', '__gaTracker_onsite');
+__gaTracker('create', 'UA-561000-43', 'auto', 'affiliateAnalyticsTest');
+__gaTracker('__gaTracker_www.set', 'dimension6', user.getSegment());
+__gaTracker('__gaTracker_www.set', gaPageTypeDimension, gaPageType);
+__gaTracker('__gaTracker_www.set', 'contentGroup5', gaPageType); 
+__gaTracker('__gaTracker_www.send', 'pageview');
+__gaTracker('__gaTracker_onsite.send', 'pageview');
+__gaTracker('affiliateAnalyticsTest.send', 'pageview');
+
+var aaid;
+var aasess;
+var rnd = ""; for (var i = 0; i < 24; i++) { rnd += Math.round(Math.random()*256).toString(16); }
+var affTimer17 = setInterval(function() {
+  try{
+    if(affanLoaded == true){
+      clearInterval(affTimer17);
+      aaid = Affan.uniqueId();
+      aasess = Affan.sessionId();
+      __gaTracker('create', 'UA-561000-41', 'auto', 'affiliateAnalytics');
+      __gaTracker('affiliateAnalytics.set', 'userId', aaid);
+      __gaTracker('affiliateAnalytics.set', 'dimension1', aaid);
+      __gaTracker('affiliateAnalytics.set', 'dimension2', aasess);      
+      __gaTracker('affiliateAnalytics.send', 'pageview');
+      //GA Tracking Formerly Here - Check file history if needed.
+    } else {
+      //GA Tracking Formerly Here - Check file history if needed.
+    }
+  }catch(error){
+    //GA Tracking Formerly Here - Check file history if needed.
+  }
+}, 100);
+//Content Link Tracking
+$j(document).ready(function() {
+  $j('.story_body a').click(function() {
+    if(!$j(this).hasClass('fancybox')){      
+      affNet = $j(this).attr('data-affiliate-network');
+      affMerch = $j(this).attr('data-affiliate-merch');
+      if(affNet && affMerch && affanLoaded == true){
+
+        __trackGAEvent('Affiliate Actions', 'Article Link Clicked', 'Article');
+        __trackGAEvent('Affiliate Networks', affNet, 'Article');
+        __trackGAEvent('Affiliate Merchants', affMerch, 'Article');       
+
+      }
+    }
+  });  
+
+  var affiliateAnalytics__ContentLink;
+  var aff_link_data = {};
+
+  if (window.affanLoaded == undefined) affanLoaded = false;
+
+  var affLinkTimer = setInterval(function() {
+    if(affanLoaded == true){
+
+      clearInterval(affLinkTimer);
+
+      $j('.story_body a').each(function(index, element) {       
+
+        affNet = $j(this).attr('data-affiliate-network');
+        affMerch = $j(this).attr('data-affiliate-merch');
+
+        if(affNet && affMerch && affanLoaded == true && $j(this).hasClass('fancybox') == false){
+
+          $j(this).wrap('<span id="affContainer'+index+'" />');
+          $j(this).attr('role', 'affan_link').attr('target','_blank').attr('data-link-class', 'ProductLinkBrowse');
+
+          linkType = "Text";
+          if($j(this).find('img').length == 1) linkType = "Image";
+          pageUrl = window.location.href;
+          publishedAt = $j('.author_info:first .timestamp').attr('data-orig-date');
+          reqPath = window.location.pathname;
+          sessionId = Affan.sessionId();
+          userId = Affan.uniqueId();
+          thisSite = "MTB";
+          thisTitle = $j(this).html();
+          if($j(this).find('img').length == 1){
+            if($j(this).find('img').attr('alt')){
+              thisTitle = $j(this).find('img').attr('alt');
+            } else {
+              thisTitle = 'Image';
+            }
+          }   
+
+          affiliateAnalytics__ContentLink = new Affan(aff_link_data, {
+            product_type: 'Article',
+            section:      "Article",
+            page_url:     pageUrl,
+            link_type:    linkType,
+            network:      affNet,
+            page_url:     pageUrl,
+            product_type: "Article",
+            published_at: publishedAt,
+            request_path: reqPath,
+            retailer:     affMerch,
+            section:      "Article",
+            session_uid:  sessionId,
+            sha:          userId,
+            site:         thisSite,
+            title:        thisTitle,
+            user_uid:     userId,
+            is_mobile:    0
+          });
+
+          affiliateAnalytics__ContentLink.init('#affContainer'+index+'');
+
+        } //if aff link
+      });
+    }
+  }, 500);
+
+
+  trackMainMenuDesktop();
+
+  //New User
+  if($j('.newUserTrig').length > 0){
+    if(getFbCookie('fb_connected_guest') == "true"){
+      deleteFbCookie('fb_connected_guest');
+      __trackGAEvent('New Members', 'Facebook for Registration');
+      __trackGAEvent('Facebook Connected Members', 'Facebook For Registration');
+    } else {
+      __trackGAEvent('New Members', 'Direct Registration');
+    }
+  }
+
+  //FB Connect
+  if(getFbCookie('fb_connected_user') == "true"){
+    deleteFbCookie('fb_connected_user');
+    __trackGAEvent('Facebook Connected Members', 'Connect Existing Profile');
+  } 
+
+});
+
+function getFbCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+function deleteFbCookie(cname) {
+  document.cookie = cname + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+</script>
+<!-- End Google Analytics -->
+
+<script src="/assets/just-detect-adblock-f5fc4b2745811f93a46882335f69da9344faa300d2c01ad732ef53c6e65563b7.js"></script>
+<script>
+
+var abActive = window.justDetectAdblock == undefined;
+if (window.justDetectAdblock){
+  justDetectAdblock.detectAnyAdblocker().then(function(detected) {
+    abActive = detected;
+  });
+}
+setTimeout(function(){
+  if (!abActive){
+    //alert('You are not blocking ads!');
+    window.prerollFinished = false
+  } else {
+    //alert('You are blocking ads!');
+    window.prerollFinished = true
+    $j(document).ready(function() {
+      __trackGAEvent('Adblocking', 'Adblocking - Yes');
+    });
+  }
+}, 500);
+</script>
+
+<script>
+//<![CDATA[
+
+  $j.getJSON('/ulv');
+
+//]]>
+</script>
+
+
+<script data-account="QsALXvRHtW" src="https://cdn.userway.org/widget.js"></script>
+<link rel='stylesheet' type='text/css' href='https://cdn-prod.securiti.ai/consent/cookie-consent.css' />
+
+</head>
+
+<body id="search">
+<script>
+(function () {
+  var s = document.createElement('script');
+  s.src = 'https://cdn-prod.securiti.ai/consent/cookie-consent-sdk.js';
+  s.setAttribute('data-tenant-uuid', '80ee5e6a-d356-486d-983c-ceeebd044b11');
+  s.setAttribute('data-domain-uuid', '223f19b7-6ad6-4cd9-917e-4ee407986512');
+  s.setAttribute('data-backend-url', 'https://app.securiti.ai');
+  s.defer = true;
+  var parent_node = document.head || document.body;
+  parent_node.appendChild(s);
+  s.addEventListener('load', function() { window.initCmp(); });
+})()
+</script>
+<div style="display: none;">
+  Accessibility Widget: <a class="site-accessibility-on">On</a> | <a class="site-accessibility-off active">Off</a>
+</div>
+
+<script type="text/javascript">if (navigator.userAgent && navigator.userAgent.match(/(iphone|ipad)/gi)) { document.body.style.backgroundImage = ''; document.body.style.background = '#000000'; }</script>
+<!-- Facebook SDK -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '119061684797208',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v6.0'
+    });
+  };
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/all.js"></script>
+<!-- end Facebook SDK -->
+
+
+<script type="text/javascript">
+if (window.screen.width <= 1024 || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i)) {
+  document.getElementsByTagName('body')[0].className = 'small_scrn';
+}
+</script>
+
+<div id="fixed_top">
+  <!-- header -->
+<div id="header_wrapper">
+  <div id="header" class="clearfix" style="display:none">
+    <div id="logo">
+      <a href="/">Vital MTB</a>
+    </div>
+    <div id="aba-top-container" data-buster="busterWrap" style="display: block !important">
+        <div class="gad-inner" id='MTB_desktop_homepage_top'>
+    <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('MTB_desktop_homepage_top'); });
+    </script>
+  </div>
+
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3;"><a id="tacticalBottom" data-buster="busted" role="aba-top">aba</a></div>
+    </div>
+  </div>  
+</div>
+<!-- // header -->
+
+<script type="text/javascript">
+var Supersession = {
+  timeStarts: new Date('Sat Mar 24 2012 00:00:00 GMT-0700'),
+  timeEnds: new Date('Tue Mar 27 2012 13:00:00 GMT-0700'),
+  timeIsBetween: function(ds,de) {
+    return (new Date()) > ds && (new Date()) < de;
+  },
+  timeIsAfter: function(ds) {
+    return (new Date()) > ds;
+  },
+  useSSHeader: function() {
+    var h = document.getElementById('header');
+    h.innerHTML = '';
+    h.style.height = '118px';
+    h.style.backgroundColor = '#000';
+    h.style.backgroundImage = 'url(https://assets.vitalmedianet.com/images/_mtb/super_session_2012.gif)';
+    h.style.backgroundPosition = '50% 0';
+    h.style.backgroundRepeat = 'no-repeat';
+    return false;
+  },
+  init: function() {
+    // if (this.timeIsAfter(this.timeStarts) && document.title.toLowerCase().indexOf('super session') !== -1) this.useSSHeader();
+    // else if (this.timeIsBetween(this.timeStarts, this.timeEnds) && window.location.pathname == '/') this.useSSHeader();
+    var h = document.getElementById('header');
+    h.style.display = 'block';
+  }
+};
+Supersession.init();
+</script>
+
+</div>
+
+<div id="main_nav_wrapper">
+  <div id="main_nav">
+    <ul class="clearfix">
+      <li id="main_nav_community">
+        <a href="/community/main">Bike Checks</a>
+        <ul>
+        <li><a href="/community/main">All Member Bike Checks</a></li>
+        <li><a href="/community/bike_checks_leaderboard">Top Bike Checks</a></li>
+        <li><a href="/profile_manager/setup_checks">Add Your Bike</a></li>
+        </ul>
+      </li>
+      <li id="main_nav_photos">
+        <a href="/photos/main">Photos</a>
+        <ul>
+        <li><a href="/photos/main">All Photos</a></li>
+        <li><a href="/photos/main?scope=feature">Feature Photos</a></li>
+        <li><a href="/profile_manager/photo_albums">Add Photos</a></li>
+        </ul>
+      </li>
+      <li id="main_nav_videos">
+        <a href="/videos/main">Videos</a>
+        <ul>
+        <li><a href="/videos/main">All Videos</a></li>
+        <li><a href="/videos/main?scope=feature">Feature Videos</a></li>
+        <li><a href="/vitalraw">Vital RAW</a></li>
+        <li><a href="/bikesandproducts">Product / Technical</a></li>
+        <li><a href="/trailguide">POV / Helmet Cam</a></li>
+        <li><a href="/how-to">How-To Videos</a></li>
+        <li><a href="/17questions">17 Questions</a></li>
+        <li><a href="/videovault">Video Vault</a></li>
+        <li><a href="/rapidfire">Rapid Fire</a></li>
+        <li><a href="/jra">JRA</a></li>
+        <li><a href="/videos/features/Bar-Drag-Bounty-is-Back-Win-a-Rocky-Mountain-Maiden-Park-DH-Bike,30973/sspomer,2">Bar Drag Bounty 4</a></li>
+        <li><a href="/videos/commercials">Commercials</a></li>
+        <li><a href="/videos/new">Add a Video</a></li>
+        </ul>
+      </li>
+      <li id="main_nav_product">
+        <a href="/product/main">Product</a>
+        <ul>
+        <li><a href="/product/main">All Products</a></li>
+        <li class="is_indented"><a href="/product/category/Bikes,2">All Bikes</a></li>
+        <li class="is_indented"><a href="/product/category/Bikes,3/riding_type/cross_country">Cross-Country Bikes</a></li>
+        <li class="is_indented"><a href="/product/category/Bikes,3/riding_type/dirt_jump_slopestyle">Dirt Jumping Bikes</a></li>
+        <li class="is_indented"><a href="/product/category/Bikes,3/riding_type/downhill">Downhill Bikes</a></li>
+        <li class="is_indented"><a href="/product/category/Bikes,3/riding_type/enduro_allmountain">Enduro Bikes</a></li>
+        <li class="is_indented"><a href="/product/category/Bikes,3/riding_type/freeride_bike_park">Freeride Bikes</a></li>
+        <li class="is_indented"><a href="/product/category/Bikes,3/riding_type/all_mountain">Trail Bikes</a></li>
+        <li class="is_indented"><a href="/product/category/Frames,7/riding_type/dirt_jump_slopestyle">Dirt Jumping Frames</a></li>
+        <li class="is_indented"><a href="/product/category/Frames,7/riding_type/downhill">Downhill Frames</a></li>
+        <li class="is_indented"><a href="/product/category/Suspension-Forks,33">Suspension Forks</a></li>
+        <li class="is_indented"><a href="/product/category/Full-Face-Helmets,52">Full-Face Helmets</a></li>
+        <li class="is_indented"><a href="/product/category/Handlebars,38">Handlebars</a></li>
+        <li><a href="/product/main?brands">All Brands</a></li>
+        <li><a href="/product/reviews">Latest Reviews</a></li>
+        <li><a href="/product/top_reviewers">Top Reviewers</a></li>
+        <li><a href="https://www.vitalmtb.com/tags/test_sessions_vital_feature?taggable=stories">Test Sessions</a></li>
+        <li><a href="/product/deals">Vital MTB Deals</a></li>
+        </ul>
+      </li>
+      <li id="main_nav_forum">
+        <a href="/forums/main">Forum</a>
+      </li>
+      <li id="main_nav_gear club">
+        <a href="https://gearclub.vitalmtb.com/?utm_source=vitalmtb.com&amp;utm_medium=Nav%20Bar" rel="nofollow" target="_blank">Gear Club</a>
+      </li>
+      <li id="main_nav_mtb deals">
+        <a href="/product/deals">MTB Deals</a>
+      </li>
+      <li id="main_nav_more ▾">
+        <a href="javascript:;">More ▾</a>
+        <ul>
+        <li><a href="https://store.vitalmedianet.com/category/vital-mtb" rel="nofollow" target="_blank">Vital Products</a></li>
+        <li><a href="/tags/the_inside_line_vital_feature">Inside Line Podcast</a></li>
+        <li><a href="/news/main">News</a></li>
+        <li><a href="/news/features/main">Feature Stories</a></li>
+        <li><a href="/news/blog/main">Member Blogs</a></li>
+        <li><a href="/news/press-release/main">Press Releases</a></li>
+        <li><a href="javascript:$j(&#39;.userway&#39;).toggleClass(&#39;is-visible&#39;);"><i class="fa fa-universal-access"></i> Accessibility<br />Widget</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div id="wpadWrapper" style="display: none">
+  <div id="wpadContainer"> 
+    <div class="wpadUnit" id="wpadUnitL">
+      <div data-buster="busterWrap" id='MTB_desktop_wallpaper_left'>
+        <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display('MTB_desktop_wallpaper_left'); });
+        </script>
+      </div>
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3;"><a id="tacticalBottom" data-buster="busted" role="">aba</a></div>
+    </div> 
+    <div id="wpadCenter"></div> 
+    <div class="wpadUnit" id="wpadUnitR">
+      <div data-buster="busterWrap" id='MTB_desktop_wallpaper_right'>
+        <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display('MTB_desktop_wallpaper_right'); });
+        </script>
+      </div>
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3;"><a id="tacticalBottom" data-buster="busted" role="">aba</a></div>
+    </div> 
+  </div> 
+</div>
+
+
+<div id="container">
+<script type="text/javascript">
+if (navigator.userAgent && navigator.userAgent.match(/(iphone|ipad)/gi) && $j('#wpadWrapper')) $j('#wpadWrapper').remove();
+else vitalPage.showWallpaperAd();
+
+facebookRedirectUrl = "https://www.facebook.com/v6.0/dialog/oauth?client_id=119061684797208&amp;redirect_uri=https://www.vitalmtb.com/fb_connect";
+</script>
+
+  <div id="user_menu">
+    <div class="search_form">
+  <form method="get" action="/search">
+    <input type="hidden" name="cat" value="Site" />
+    <input name="q" type="text" value="Search Site" title="Query Input" onblur="if(this.value.length == 0) this.value='Search Site'" onclick="if(this.value == 'Search Site') this.value=''" />
+    <input type="button" class='search_btn' onclick="$j(this).closest('form').submit()" />
+  </form>
+</div>
+
+    <script type="text/javascript">
+          $j.get("/partials/login", function(response) {
+            $j("#user_menu").append(response);
+          });
+          $j.get("/partials/facebook_banner", function(response) {
+            $j("#user_menu").after(response);
+          });
+          if($j.user.is_admin()){
+            $j.getJSON( "/manage/content_feeds/stat", function() {             
+              }).done(function(data){
+                feedSize = data['feed_size'];
+                if(feedSize > 0){
+                  $j('#user_menu').prepend('<div class="adminReview">Posts to review: <a href="/manage/content_feeds" target="_blank">'+feedSize+'</a></div>');
+                }
+            });
+          }
+    </script>
+  </div>
+  <div class="content cf">
+    
+    <div id="notice" style="display: none">
+  
+</div>
+
+<script>
+//<![CDATA[
+
+  var flashNotice = Cookie.get('flash_notice');
+  if (flashNotice){
+    flashNotice = decodeURIComponent(flashNotice.replace(/\+/gm, ' '));
+    $j('#notice').text(flashNotice);
+    $j('#notice').show();
+    Cookie.unset('flash_notice');
+  }
+
+//]]>
+</script>
+    
+    
+    
+    
+    <div class="content_inner    ">
+      
+<h1 class="clearfix">Search Results</h1>
+
+<form method="GET" role="forum-search-form" action="/search" class="vital-search with-filters">
+  <input type="hidden" name="cat" value="Site" />
+  <input value="YT CAPRA 2022" role="forum-search-query" class="query " onblur="if(this.value.length == 0) this.value=&#39;Search Site&#39;; $j(this).addClass(&#39;placeholder&#39;)" onclick="if(this.value == &#39;Search Site&#39;) this.value=&#39;&#39;; $j(this).removeClass(&#39;placeholder&#39;)" type="text" name="q" id="q" />
+  <input type="submit" value="Search" role="search-btn" />
+
+  <span role="clear-search-tool">
+  <a role="clear-search-link" class="search-clear" href="/search">Clear search</a>
+  </span>
+</form>
+
+<script src="/assets/jquery.infinitescroll-aa2f70a91552fe025bdb33b32a5c690794d055850e9c9aeac72f524bb4f0ec26.js"></script>
+
+
+<div class='clearfix'></div>
+
+
+<div class="vital-search-sort filter_sort">
+  <ul class='inline'>
+    <li class="first">Section:</li>
+    <li class="dropdown">
+      <a class="color_stay">Product</a>
+      <ul>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=all">All</a></li>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=bike_checks">Bike Checks</a></li>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=features">Features</a></li>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=forum">Forum</a></li>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=members">Members</a></li>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=news">News</a></li>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=photos">Photos</a></li>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=videos">Videos</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul class='inline' style='margin-left: 10px'>
+    <li class="first">Period:</li>
+    <li class="dropdown">
+      <a class="color_stay">All Time</a>
+      <ul>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=past_24h&amp;q=YT+CAPRA+2022&amp;section=product">Past 24 hours</a></li>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=past_7d&amp;q=YT+CAPRA+2022&amp;section=product">Past 7 days</a></li>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=past_30d&amp;q=YT+CAPRA+2022&amp;section=product">Past 30 days</a></li>
+        <li><a href="/search?cat=Site&amp;page=1&amp;period=past_365d&amp;q=YT+CAPRA+2022&amp;section=product">Past 365 days</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class='clearfix'></div>
+
+  <div role="search-results">
+  <div class="vital-search-result" role="search-result">
+    <h4><a href="https://www.vitalmtb.com/product/guide/Bikes,3/YT/Capra-MX-Launch-Edition,33908"><b>2022 YT Capra</b> MX Launch Edition Bike - Reviews, Comparisons ...</a></h4>
+    <div class="thumbnail"><img alt="thumbnail" src="https://p.vitalmtb.com/photos/products/33908/photos/76589/s1600_photo_935559.jpg?1621364188" /></div>
+    <div class="body">
+      Need more info? View our Enduro / All-Mountain Mountain Bikes or Freeride / Bike Park Mountain Bikes buyer&#39;s guides. Reviews; Specs; Write Review&nbsp;...
+    </div>
+  </div>
+  <div class="vital-search-result" role="search-result">
+    <h4><a href="https://www.vitalmtb.com/product/guide/Bikes,3/YT/Capra-MX-Core-4,33909"><b>2022 YT Capra</b> MX Core 4 Bike - Reviews, Comparisons, Specs ...</a></h4>
+    <div class="thumbnail"><img alt="thumbnail" src="https://p.vitalmtb.com/photos/products/33909/photos/76592/s1600_photo_509864.jpg?1621364300" /></div>
+    <div class="body">
+      Need more info? View our Enduro / All-Mountain Mountain Bikes or Freeride / Bike Park Mountain Bikes buyer&#39;s guides. Reviews; Specs; Write Review&nbsp;...
+    </div>
+  </div>
+  <div class="vital-search-result" role="search-result">
+    <h4><a href="https://www.vitalmtb.com/product/guide/Bikes,3/YT/Capra-29-Uncaged-6,35144"><b>2022 YT Capra</b> 29 Uncaged 6 Bike - Reviews, Comparisons, Specs ...</a></h4>
+    <div class="thumbnail"><img alt="thumbnail" src="https://p.vitalmtb.com/photos/products/35144/photos/82173/s1600_photo_786454.jpg?1633647725" /></div>
+    <div class="body">
+      Need more info? View our Enduro / All-Mountain Mountain Bikes or Freeride / Bike Park Mountain Bikes buyer&#39;s guides. Reviews; Specs; Write Review&nbsp;...
+    </div>
+  </div>
+  <div class="vital-search-result" role="search-result">
+    <h4><a href="https://www.vitalmtb.com/product/guide/Bikes,3/YT/Capra-29-Core-4,33911"><b>2022 YT Capra</b> 29 Core 4 Bike - Reviews, Comparisons, Specs ...</a></h4>
+    <div class="thumbnail"><img alt="thumbnail" src="https://p.vitalmtb.com/photos/products/33911/photos/76607/s1600_photo_589391.jpg?1621364795" /></div>
+    <div class="body">
+      Need more info? View our Enduro / All-Mountain Mountain Bikes or Freeride / Bike Park Mountain Bikes buyer&#39;s guides. Reviews; Specs; Write Review&nbsp;...
+    </div>
+  </div>
+  <div class="vital-search-result" role="search-result">
+    <h4><a href="https://www.vitalmtb.com/product/guide/Bikes,3/YT/Capra-29-Core-3,33912"><b>2022 YT Capra</b> 29 Core 3 Bike - Reviews, Comparisons, Specs ...</a></h4>
+    <div class="thumbnail"><img alt="thumbnail" src="https://p.vitalmtb.com/photos/products/33912/photos/76613/s1600_photo_710338.jpg?1621365084" /></div>
+    <div class="body">
+      Need more info? View our Enduro / All-Mountain Mountain Bikes or Freeride / Bike Park Mountain Bikes buyer&#39;s guides. Reviews; Specs; Write Review&nbsp;...
+    </div>
+  </div>
+  <div class="vital-search-result" role="search-result">
+    <h4><a href="https://www.vitalmtb.com/product/guide/Bikes,3/YT/Capra-MX-Core-3,33910"><b>2022 YT Capra</b> MX Core 3 Bike - Reviews, Comparisons, Specs ...</a></h4>
+    <div class="thumbnail"><img alt="thumbnail" src="https://p.vitalmtb.com/photos/products/33910/photos/76598/s1600_photo_495678.jpg?1621364576" /></div>
+    <div class="body">
+      Need more info? View our Enduro / All-Mountain Mountain Bikes or Freeride / Bike Park Mountain Bikes buyer&#39;s guides. Reviews; Specs; Write Review&nbsp;...
+    </div>
+  </div>
+  <div class="vital-search-result" role="search-result">
+    <h4><a href="https://www.vitalmtb.com/product/combination/YBMC/2022/YT,1088/Bikes,3/Capra"><b>YT</b> Mountain Bikes - Reviews, Comparisons, Specs - Vital MTB</a></h4>
+    <div class="body">
+      <b>2022 YT Capra</b> Mountain Bikes. See more posts about Bikes. Filter Results. 1-6 of 6 Products. Apply Filters. Category. Bikes(6). Brand. YT(6).
+    </div>
+  </div>
+  <div class="vital-search-result" role="search-result">
+    <h4><a href="https://www.vitalmtb.com/product/guide/Bikes,3/YT/Jeffsy-29-Uncaged-6,35143"><b>2022 YT</b> Jeffsy 29 Uncaged 6 Bike - Reviews, Comparisons, Specs ...</a></h4>
+    <div class="thumbnail"><img alt="thumbnail" src="https://p.vitalmtb.com/photos/products/35143/photos/82170/s1600_photo_94760.jpg?1633647596" /></div>
+    <div class="body">
+      Need more info? View our Enduro / All-Mountain Mountain Bikes buyer&#39;s guide. Reviews; Specs; Write Review. Specifications&nbsp;...
+    </div>
+  </div>
+  <div class="vital-search-result" role="search-result">
+    <h4><a href="https://www.vitalmtb.com/product/guide/Bikes,3/YT/Capra-Elite-29,30869">2020 <b>YT Capra</b> Elite 29 Bike - Reviews, Comparisons, Specs ...</a></h4>
+    <div class="thumbnail"><img alt="thumbnail" src="https://p.vitalmtb.com/photos/products/30869/photos/64009/s1600_photo_486054.jpg?1595557009" /></div>
+    <div class="body">
+      Need more info? View our Enduro / All-Mountain Mountain Bikes or Freeride / Bike Park Mountain Bikes buyer&#39;s guides. Reviews; Specs; Write Review&nbsp;...
+    </div>
+  </div>
+  <div class="vital-search-result" role="search-result">
+    <h4><a href="https://www.vitalmtb.com/product/category/Bikes,3/riding_type/dirt_jump_slopestyle/?discontinued=false&amp;product_category_id[]=54&amp;manufacturer_id[]=1088&amp;riding_type[]=enduro_allmountain">Mountain Bikes – Reviews, Comparisons, Specs - Vital MTB</a></h4>
+    <div class="body">
+      Products 1 - 15 of 20 <b>...</b> Filters: BikesBody ArmorYTDirt Jump / SlopestyleEnduro ... 2021 <b>YT Capra</b> Blaze 29 Bike ... <b>2022 YT Capra</b> MX Launch Edition Bike.
+    </div>
+  </div>
+  </div>
+
+<div style="display: none">
+<div class="pagination"><span class="previous_page disabled">&laquo; Previous</span> <span class="current">1</span> <a rel="next" href="/search?cat=Site&amp;page=2&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product">2</a> <a href="/search?cat=Site&amp;page=3&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product">3</a> <a href="/search?cat=Site&amp;page=4&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product">4</a> <a href="/search?cat=Site&amp;page=5&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product">5</a> <a href="/search?cat=Site&amp;page=6&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product">6</a> <a href="/search?cat=Site&amp;page=7&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product">7</a> <a href="/search?cat=Site&amp;page=8&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product">8</a> <a href="/search?cat=Site&amp;page=9&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product">9</a> <a href="/search?cat=Site&amp;page=10&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product">10</a> <a class="next_page" rel="next" href="/search?cat=Site&amp;page=2&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product">Next &raquo;</a></div>
+</div>
+
+
+<script>
+//<![CDATA[
+
+  var paginationSelector = "div.pagination";
+  $j('@search-results').infinitescroll({
+    navSelector: paginationSelector,
+    nextSelector: paginationSelector + " a[rel=next]",
+    itemSelector: "@search-result",
+    extraScrollPx: 50,
+    bufferPx: 50
+  }, function() {
+    $j('#infscr-loading').detach();
+  });
+
+//]]>
+</script>
+
+        <div class="aba-bottom-container" style="margin-top: 20px;">
+          <div id="adb-bottom" data-buster="busterWrap">
+              <div class="gad-inner" id='MTB_desktop_homepage_bottom'>
+    <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('MTB_desktop_homepage_bottom'); });
+    </script>
+  </div>
+
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3;"><a id="tacticalBottom" data-buster="busted" role="aba-bottom">aba</a></div>
+          </div>
+        </div>
+    </div>
+    
+<div class="sidebar normal">
+  <div class="aba-sidebar-container" data-buster="busterWrap" data-scroll-buster="true">
+    <div class="gad-inner" id='MTB_desktop_search_main_side'>
+    <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('MTB_desktop_search_main_side'); });
+    </script>
+  </div>
+
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3;"><a id="tacticalBottom" data-buster="busted" role="aba-side">aba</a></div>
+</div>
+<!--<div class="clearfix"></div>-->
+</div>
+
+
+  </div>
+
+  <!-- footer -->
+<div id="footer">  
+
+
+<script>
+//Affan
+
+</script>
+
+
+<script type='text/javascript'>
+	
+	/*Swap Image Size*/
+	$j(document).ready(function() {
+	  relatedFooterImageSwap();
+	});	
+	$j(window).resize(function() {
+	  relatedFooterImageSwap();
+	});
+	function relatedFooterImageSwap() {
+	  $j('.related_in_footer li .photo img').each(function() {
+	    imgSize = $j(this).closest('li').width();
+	    console.log('imgSize:'+imgSize);
+	    origSize = '/c235x132_';
+	    originalURL = $j(this).attr('data-original');
+	    if(!originalURL){
+	    	originalURL = $j(this).attr('src');
+	    	$j(this).attr('data-original', originalURL);
+	    }
+	    if(imgSize > 500){	
+	  		newUrl = originalURL.replace(origSize, "/c600x337_"); 
+	  		$j(this).attr('src', newUrl);  	
+	  	} else if (imgSize > 366) { 
+	  		newUrl = originalURL.replace(origSize, "/c500x280_"); 
+	  		$j(this).attr('src', newUrl);  		
+	  	} else if (imgSize > 235) { 
+	  		newUrl = originalURL.replace(origSize, "/c366x206_"); 
+	  		$j(this).attr('src', newUrl);
+	  	} else {
+	  	  newUrl = originalURL.replace(origSize, "/c235x132_"); 
+	  	  $j(this).attr('src', newUrl);
+	    }
+	  });
+	}	
+</script>
+
+
+<script type='text/javascript'>
+	
+	/*Swap Image Size*/
+	$j(document).ready(function() {
+	  latestFooterImageSwap();
+	});	
+	$j(window).resize(function() {
+	  latestFooterImageSwap();
+	});
+	function latestFooterImageSwap() {
+	  $j('.footer_latest_block li .photo img').each(function() {
+	    imgSize = $j(this).closest('li').width();
+	    console.log('imgSize:'+imgSize);
+	    origSize = '/c235x132_';
+	    originalURL = $j(this).attr('data-original');
+	    if(!originalURL){
+	    	originalURL = $j(this).attr('src');
+	    	$j(this).attr('data-original', originalURL);
+	    }
+	    if(imgSize > 500){	
+	  		newUrl = originalURL.replace(origSize, "/c600x337_"); 
+	  		$j(this).attr('src', newUrl);  	
+	  	} else if (imgSize > 366) { 
+	  		newUrl = originalURL.replace(origSize, "/c500x280_"); 
+	  		$j(this).attr('src', newUrl);  		
+	  	} else if (imgSize > 235) { 
+	  		newUrl = originalURL.replace(origSize, "/c366x206_"); 
+	  		$j(this).attr('src', newUrl);
+	  	} else {
+	  	  newUrl = originalURL.replace(origSize, "/c235x132_"); 
+	  	  $j(this).attr('src', newUrl);
+	    }
+	  });
+	}	
+</script>
+
+
+<script type='text/javascript'>
+  $j('.footer_most_popular a').mouseover(function(){
+		var item = $j(this).parents('li');
+		item.find('.photo a').addClass('mouse-over');
+		item.find('a.link').addClass('mouse-over');
+	});
+	
+	$j('.footer_most_popular a').mouseout(function(){
+		var item = $j(this).parents('li');
+		item.find('.photo a').removeClass('mouse-over');
+		item.find('a.link').removeClass('mouse-over');
+	});
+	
+	/*Swap Image Size*/
+	$j(document).ready(function() {
+	  mostPopImageSwap();
+	});	
+	$j(window).resize(function() {
+	  mostPopImageSwap();
+	});
+	function mostPopImageSwap() {
+	  $j('.footer_most_popular li .photo img').each(function() {
+	    imgSize = $j(this).closest('li').width();
+	    console.log('imgSize:'+imgSize);
+	    origSize = '/c366x206_';
+	    originalURL = $j(this).attr('data-original');
+	    if(!originalURL){
+	    	originalURL = $j(this).attr('src');
+	    	$j(this).attr('data-original', originalURL);
+	    }
+	    if(imgSize > 500){	
+    		newUrl = originalURL.replace(origSize, "/c600x337_"); 
+    		$j(this).attr('src', newUrl);  	
+    	} else if (imgSize > 366) { 
+    		newUrl = originalURL.replace(origSize, "/c500x280_"); 
+    		$j(this).attr('src', newUrl);  		
+    	} else {
+    	  newUrl = originalURL.replace(origSize, "/c366x206_"); 
+    	  $j(this).attr('src', newUrl);
+	    }
+	  });
+	}	  
+</script>
+
+<div id="site_wide_links">
+  <a href="/terms-of-use" rel="nofollow">Terms &amp; Conditions</a> | 
+  <a href="/privacy-policy" rel="nofollow">Privacy Policy</a> | 
+  <a href="/dmca" rel="nofollow">DMCA</a> | 
+  <a href="/cookies-policy" rel="nofollow">Cookie Policy</a> | 
+  <a href="/fb_connect/faq">Facebook F.A.Q.</a>
+  <br>
+  <a href="http://www.vitalmedianet.com/index.php/mtb/" target="_blank">Advertising</a> | 
+  <a href="mailto:sspomer@vitalmtb.com" rel="nofollow" target="_blank">Contact</a> | 
+  <a href="https://www.vitalbmx.com">BMX</a> | 
+  <a href="https://www.vitalmtb.com">Mountain Bike</a> |
+  <a href="http://www.vitalmx.com">Motocross</a>
+  <label>
+    <span>Version: <a class="active">Desktop</a> | <a href="https://www.vitalmtb.com/search?cat=Site&amp;page=1&amp;period=all_time&amp;q=YT+CAPRA+2022&amp;section=product&amp;mobile=true" rel="nofollow">Mobile</a></span>
+    <span class="footer__accessibility">
+      <a class="footer__accessibility__statement" href="/accessibility-statement" rel="nofollow">Accessibility Statement</a>
+      <i class="fa fa-universal-access"></i>
+      Accessibility Widget: <a class="site-accessibility-on">On</a> | <a class="site-accessibility-off active">Off</a>
+    </span>
+  </label>
+  <label>&copy; 2021 Vital Media Network, Inc.</label>
+</div>
+</div>
+<!-- // footer -->
+
+<div id="debug" class="hide">
+<ul>
+  <li>@cache_main: </li>
+</ul>
+</div>
+
+<script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=vitalbrad"></script>
+
+  
+</div>
+<script type="text/javascript">
+vitalPage.adjustBgAdHeight();
+prepOutboundLinks();
+</script>
+
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript">
+_qoptions={
+qacct:"p-5bUjnbj6Bo8KU"
+};
+</script>
+<script type="text/javascript" src="//assets.vitalmedianet.com/javascripts/quant.js"></script>
+<noscript>
+<img src="//pixel.quantserve.com/pixel/p-5bUjnbj6Bo8KU.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+</noscript>
+<!-- End Quantcast tag -->
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<!-- Handlebars templates -->
+<script type="text/x-handlebars-template" id="user-widget-new-tmpl"><div class="user_widget"><div class="user_widget__inner"><div class="widget_header"><div class="widget_header__userpic"><a href="{{url}}" title="View{{nickname}}'s profile"><img alt="{{nickname}}" src="{{userpic}}" width="48" height="48"></a></div><div class="widget_header__username"><p class="cmmnt_username"><a href="{{url}}" title="View{{nickname}}'s profile">{{nickname}}</a></p><p class="cmmnt_timestamp timestamp">Member since:{{member_since}}</p></div><div class="x_close_link"><a title="Hide">Close</a></div></div><div class="widget_section">{{#if location}}<p>Location: <strong>{{location}}</strong></p>{{/if}}{{#if summary.stories}}<p>Posts: <a href="{{url}}#stories">{{summary.stories}}</a></p>{{/if}}{{#if summary.friends}}<p>Friends: <a href="{{url}}#friends">{{summary.friends}}</a></p>{{/if}}{{#if summary.photos}}<p>Photos: <a href="{{url}}#photos">{{summary.photos}}</a></p>{{/if}}{{#if summary.videos}}<p>Videos: <a href="{{url}}#videos">{{summary.videos}}</a></p>{{/if}}{{#if summary.setup_link}}<p>Bike Check: <a href="{{summary.setup_link}}">view</a></p>{{/if}}{{#if summary.forum_new_topics}}<p>Forum topics started: <a href="{{url}}#forum">{{summary.forum_new_topics}}</a></p>{{/if}}{{#if summary.forum_replies}}<p>Forum replies: <a href="{{url}}#forum">{{summary.forum_replies}}</a></p>{{/if}}{{#if summary.comments}}<p>Comments: <a href="{{url}}#comments">{{summary.comments}}</a></p>{{/if}}{{#if summary.reviews}}<p>Reviews: <a href="{{url}}#reviews">{{summary.reviews}}</a></p>{{/if}}{{#if summary.profile_comments}}<p>Profile comments: <a href="{{url}}#profile-comments">{{summary.profile_comments}}</a></p>{{/if}}</div>{{#if send_message_url}}<div class="widget_section"><p><a href="{{send_message_url}}" class="admin_link" rel="nofollow"><span>Send Message</span></a></p></div>{{/if}}</div></div></script>
+
+
+
+<script type="text/javascript">
+    var vglnk = {key: 'fee32ca1e2a6e08d479a50d423d20829'};
+    (function(d, t) {
+        var s = d.createElement(t);
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = '//cdn.viglink.com/api/vglnk.js';
+        var r = d.getElementsByTagName(t)[0];
+            r.parentNode.insertBefore(s, r);
+    }(document, 'script'));
+</script>
+
+
+
+</body>
+</html>
