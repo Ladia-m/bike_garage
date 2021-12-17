@@ -57,8 +57,8 @@ class Geometry:
 
 @dataclass
 class Component:
-    brand: str = field(default=None)
-    model: str = field(default=None)
+    name: str = field(default=None)
+    additional_info: str = field(default=None)
     usage: Usage = field(default=None)
 
 
@@ -89,13 +89,14 @@ class Fork(Component):
 class Handlebars(Component):
     width: int = field(default=None)
     diameter: int = field(default=None)
+    rise: int = field(default=None)
 
 
 @dataclass
 class Stem(Component):
     length: int = field(default=None)
-    rise: int = field(default=None)
-    diameter: int = field(default=None)
+    rise_angle: int = field(default=None)
+    bar_clamp: int = field(default=None)
 
 
 @dataclass
@@ -105,7 +106,7 @@ class Headset(Component):
 
 @dataclass
 class Grips(Component):
-    pass
+    lock_on: bool = field(default=None)
 
 
 @dataclass
@@ -115,12 +116,12 @@ class BreakDisc(Component):
 
     @property
     def diameter(self):
-        return self.diameter
+        return self._diameter
 
     @diameter.setter
     def diameter(self, value):
         if value in [140, 160, 180, 200, 203, 220]:
-            self.diameter = value
+            self._diameter = value
         else:
             raise ValueError
 
@@ -144,6 +145,13 @@ class VBreak(Break):
 class DiscBreak(Break):
     disc: BreakDisc = field(default=None)
     pads: Pads = field(default=None)
+
+
+@dataclass
+class Breaks(Component):
+    front_break: Break = field(default=None)
+    rear_break: Break = field(default=None)
+
 
 
 @dataclass
@@ -275,8 +283,7 @@ class BikeComponents:
     stem: Stem = field(default=None)
     headset: Headset = field(default=None)
     grips: Grips = field(default=None)
-    front_break: Break = field(default=None)
-    rear_break: Break = field(default=None)
+    breaks: Breaks = field(default=None)
     wheels: Wheels = field(default=None)
     bottom_bracket: BottomBracket = field(default=None)
     cranks: Cranks = field(default=None)

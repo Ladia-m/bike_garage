@@ -31,6 +31,7 @@ class BikeBuilder:
         for attr, _class in self.bike.components.__annotations__.items():
             if getattr(self.bike.components, attr) is not _class:
                 self.bike.components.__setattr__(attr, _class)
+        self.init_breaks()
         self.init_wheels()
 
     def init_setup(self):
@@ -38,6 +39,12 @@ class BikeBuilder:
             self.bike.setup.fork = SuspensionSetup()
         if not self.bike.setup.shock:
             self.bike.setup.shock = SuspensionSetup()
+
+    def init_breaks(self):
+        if not self.bike.components.breaks.front_break:
+            self.bike.components.breaks.front_break = Break()
+        if not self.bike.components.breaks.rear_break:
+            self.bike.components.breaks.rear_break = Break()
 
     def init_wheels(self):
         if not self.bike.components.wheels.front_wheel:
