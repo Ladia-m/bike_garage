@@ -60,12 +60,12 @@ class Usage(BikeData):
 
 class Geometry(BikeData):
     top_tube_length: Optional[int]
-    head_tube_angle: Optional[int]
+    head_tube_angle: Optional[Union[int, set]]
     head_tube_length: Optional[int]
-    seat_tube_angle: Optional[int]
+    seat_tube_angle: Optional[Union[int, set]]
     seat_tube_length: Optional[int]
-    bottom_bracket_height: Optional[int]
-    bottom_bracket_drop: Optional[int]
+    bottom_bracket_height: Optional[Union[int, set]]
+    bottom_bracket_drop: Optional[Union[int, set]]
     chainstay_length: Optional[int]
     wheelbase: Optional[int]
     standover: Optional[int]
@@ -304,13 +304,14 @@ class BikeSetup(BikeData):
 
 
 class Bike(BikeData):
-    users_name: str = field(default="my bike")
-    brand: str = field(default="unknown")
-    model: str = field(default="unknown")
-    model_year: Optional[str]
+    # TODO: generate ID of bike
+    users_name: str = field(default=None)
+    brand: str = field(default=None)
+    model: str = field(default=None)
+    model_year: str = field(default=None)
     purchase_date: datetime.time = field(default=datetime.datetime.now())
     total_usage: Usage
     geometry: Geometry
     components: BikeComponents
     setup: BikeSetup
-    weight: int = field(default=0)  # TODO: find weight module
+    weight: int = field(default=None)  # TODO: find weight module
