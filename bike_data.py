@@ -1,6 +1,7 @@
 import datetime
-from dataclasses import dataclass
-from typing import Optional
+import typing
+from dataclasses import dataclass, field
+from typing import Optional, get_origin, Union
 
 from enum import Enum
 
@@ -38,7 +39,7 @@ class HeadsetStandard(Enum):
     INTEGRATED_PRESS_FIT = "integrated press fit"
 
 
-class BottomBracketStandards(Enum):
+class BottomBracketStandard(Enum):
     THREADED = "threaded"
     PRESS_FIT = "press fit"
     BB30 = "BB30"
@@ -46,23 +47,28 @@ class BottomBracketStandards(Enum):
     SQUARE = "square"
 
 
+class ISCGStandard(Enum):
+    ISCGOLD = "ISCGold"
+    ISCG05 = "ISCG05"
+
+
 class Usage(BikeData):
-    hours: datetime
-    distance: Optional[float]
-    races: Optional[int]
+    hours: datetime.time = field(default=0)
+    distance: float = field(default=0)
+    races: int = field(default=0)
 
 
 class Geometry(BikeData):
     top_tube_length: Optional[int]
-    head_tube_angle: Optional[int]
+    head_tube_angle: Optional[Union[int, set]]
     head_tube_length: Optional[int]
-    seat_tube_angle: Optional[int]
+    seat_tube_angle: Optional[Union[int, set]]
     seat_tube_length: Optional[int]
-    bottom_bracket_height: Optional[int]
-    bottom_bracket_drop: Optional[int]
+    bottom_bracket_height: Optional[Union[int, set]]
+    bottom_bracket_drop: Optional[Union[int, set]]
     chainstay_length: Optional[int]
     wheelbase: Optional[int]
-    standover_height: Optional[int]
+    standover: Optional[int]
     reach: Optional[int]
     stack: Optional[int]
 
@@ -76,17 +82,20 @@ class Component(BikeData):
 class Frame(Component):
     model_year: Optional[int]
     size: Optional[str]
-    boost: Optional[bool]
+    dropout: Optional[int]
+    travel: Optional[int]
+    head_tube: Optional[HeadsetStandard]
+    iscg_tabs: Optional[ISCGStandard]
 
 
 class Shock(Component):
-    length: {int, str}  # {value, units}
-    suspension_type: SuspensionType
+    length: Optional[int]
+    suspension_type: Optional[SuspensionType]
 
 
 class Fork(Component):
     travel: Optional[int]
-    boost: Optional[bool]
+    dropout: Optional[int]
     offset: Optional[int]
 
 
@@ -102,7 +111,7 @@ class Stem(Component):
 
 
 class Headset(Component):
-    standard: HeadsetStandard
+    standard: Optional[HeadsetStandard]
 
 
 class Grips(Component):
@@ -142,24 +151,19 @@ class DiscBreak(Break):
     pads: Pads
 
 
-def wheel_diameter_check(value):
-    diameter = 27.5 if value == "650B" else value
-    if diameter not in [20, 24, 26, 27.5, 29]:
-        raise ValueError
-    return diameter
+class WheelSize(Enum):
+    SIXTEEN = "16\""
+    TWENTY = "20\""
+    TWENTY_FOUR = "24\""
+    TWENTY_SIX = "26\""
+    TWENTY_SEVEN = "27,5\"_650B"
+    TWENTY_NINE = "29\""
+    MULLET = "mullet_mixed"
 
 
 class Rim(Component):
     spoke_count: Optional[int]
-    diameter: Optional[str]
-
-    @property
-    def diameter(self):
-        return self.diameter
-
-    @diameter.setter
-    def diameter(self, value):
-        self.diameter = wheel_diameter_check(value)
+    size: Optional[WheelSize]
 
 
 class Hub(Component):
@@ -171,46 +175,37 @@ class Tyre(Component):
     width: Optional[float]
     casing: Optional[str]
     compound: Optional[str]
-    diameter: Optional[int]
-
-    @property
-    def diameter(self):
-        return self.diameter
-
-    @diameter.setter
-    def diameter(self, value):
-        self.diameter = wheel_diameter_check(value)
+    size: Optional[WheelSize]
 
 
 class Wheel(Component):
     rim: Rim
     hub: Hub
     tyre: Tyre
-    diameter: Optional[int]
+    size: Optional[WheelSize]
+
+
+class Wheels(Component):
+    size: Optional[WheelSize]
+    front_wheel: Wheel
+    rear_wheel: Wheel
 
     @property
-    def diameter(self):
-        if self.rim.diameter:
-            if self.rim.diameter != self.diameter:
-                raise ValueError("Rim diameter differs from wheel diameter!")
-        if self.tyre.diameter:
-            if self.tyre.diameter != self.diameter:
-                raise ValueError("Tyre diameter differs from wheel diameter!")
-        return self.diameter
+    def size(self):
+        return self.size
 
-    @diameter.setter
-    def diameter(self, value):
-        if self.rim.diameter:
-            if self.rim.diameter != value:
-                raise ValueError(f"Rim diameter {self.rim.diameter} differs from provided value!")
-        if self.tyre.diameter:
-            if self.tyre.diameter != value:
-                raise ValueError(f"Tyre diameter {self.tyre.diameter} differs from from provided value!")
-        self.diameter = wheel_diameter_check(value)
+    @size.setter
+    def size(self, value: WheelSize):
+        if value == WheelSize.MULLET:
+            self.front_wheel.size = WheelSize.TWENTY_NINE
+            self.rear_wheel.size = WheelSize.TWENTY_SEVEN
+        else:
+            self.front_wheel.size = value
+            self.rear_wheel.size = value
 
 
 class BottomBracket(Component):
-    standard = BottomBracketStandards
+    standard = Optional[BottomBracketStandard]
 
 
 class Cranks(Component):
@@ -222,8 +217,13 @@ class Pedals(Component):
     pass
 
 
-class Chainring(Component):
-    tooth_number: Optional[int]
+class Chainguide(Component):
+    mounting: Optional[str]
+
+
+class Chainrings(Component):
+    number_of_chainrings: Optional[int]
+    tooth_numbers: Optional[list]
     offset: Optional[int]
 
 
@@ -251,26 +251,26 @@ class Seatpost(Component):
 
 
 class BikeComponents(BikeData):
-    frame: Optional[Frame]
-    shock: Optional[Shock]
-    fork: Optional[Fork]
-    handlebars: Optional[Handlebars]
-    stem: Optional[Stem]
-    headset: Optional[Headset]
-    grips: Optional[Grips]
-    front_break: Optional[Break]
-    rear_break: Optional[Break]
-    front_wheel: Optional[Wheel]
-    rear_wheel: Optional[Wheel]
-    bottom_bracket: Optional[BottomBracket]
-    cranks: Optional[Cranks]
-    pedals: Optional[Pedals]
-    chainring: Optional[Chainring]
-    cassette: Optional[Cassette]
-    derailleur: Optional[Derailleur]
-    chain: Optional[Chain]
-    saddle: Optional[Saddle]
-    seatpost: Optional[Seatpost]
+    frame: Frame
+    shock: Shock
+    fork: Fork
+    handlebars: Handlebars
+    stem: Stem
+    headset: Headset
+    grips: Grips
+    front_break: Break
+    rear_break: Break
+    wheels: Wheels
+    bottom_bracket: BottomBracket
+    cranks: Cranks
+    pedals: Pedals
+    chainguide: Chainguide
+    chainring: Chainrings
+    cassette: Cassette
+    derailleur: Derailleur
+    chain: Chain
+    saddle: Saddle
+    seatpost: Seatpost
 
 
 class PressureUnits(Enum):
@@ -294,8 +294,8 @@ class SuspensionSetup(BikeData):
 class BikeSetup(BikeData):
     front_tyre: Optional[Pressure]
     rear_tyre: Optional[Pressure]
-    fork: Optional[SuspensionSetup]
-    shock: Optional[SuspensionSetup]
+    fork: SuspensionSetup
+    shock: SuspensionSetup
     stem_height: Optional[int]
     saddle_height: Optional[int]
     brake_levers_angle: Optional[int]
@@ -304,12 +304,14 @@ class BikeSetup(BikeData):
 
 
 class Bike(BikeData):
-    users_name: Optional[str]
-    brand: Optional[str]
-    model: Optional[str]
-    model_year: Optional[int]
-    purchase_date: Optional[datetime.time]
-    total_usage: Optional[Usage]
-    geometry: Optional[Geometry]
-    components: Optional[BikeComponents]
-    setup: Optional[BikeSetup]
+    # TODO: generate ID of bike
+    users_name: str = field(default=None)
+    brand: str = field(default=None)
+    model: str = field(default=None)
+    model_year: str = field(default=None)
+    purchase_date: datetime.time = field(default=datetime.datetime.now())
+    total_usage: Usage
+    geometry: Geometry
+    components: BikeComponents
+    setup: BikeSetup
+    weight: int = field(default=None)  # TODO: find weight module
