@@ -18,42 +18,42 @@ class BikeBuilder:
         self.init_setup()
 
     def init_bike(self):
-        if not hasattr(self.bike, "total_usage"):
+        if not self.bike.total_usage:
             self.bike.total_usage = Usage()
-        if not hasattr(self.bike, "geometry"):
+        if not self.bike.geometry:
             self.bike.geometry = Geometry()
-        if not hasattr(self.bike, "components"):
+        if not self.bike.components:
             self.bike.components = BikeComponents()
-        if not hasattr(self.bike, "setup"):
+        if not self.bike.setup:
             self.bike.setup = BikeSetup()
 
     def init_components(self):
         for attr, _class in self.bike.components.__annotations__.items():
-            if not hasattr(self.bike.components, attr):
+            if getattr(self.bike.components, attr) is not _class:
                 self.bike.components.__setattr__(attr, _class)
         self.init_wheels()
 
     def init_setup(self):
-        if not hasattr(self.bike.setup, "fork"):
+        if not self.bike.setup.fork:
             self.bike.setup.fork = SuspensionSetup()
-        if not hasattr(self.bike.setup, "shock"):
+        if not self.bike.setup.shock:
             self.bike.setup.shock = SuspensionSetup()
 
     def init_wheels(self):
-        if not hasattr(self.bike.components.wheels, "front_wheel"):
+        if not self.bike.components.wheels.front_wheel:
             self.bike.components.wheels.front_wheel = Wheel()
         self.bike.components.wheels.front_wheel = self.init_wheel(self.bike.components.wheels.front_wheel)
-        if not hasattr(self.bike.components.wheels, "rear_wheel"):
+        if not self.bike.components.wheels.rear_wheel:
             self.bike.components.wheels.rear_wheel = Wheel()
         self.bike.components.wheels.rear_wheel = self.init_wheel(self.bike.components.wheels.rear_wheel)
 
     @staticmethod
     def init_wheel(wheel):
-        if not hasattr(wheel, "rim"):
+        if not wheel.rim:
             wheel.rim = Rim()
-        if not hasattr(wheel, "Hub"):
+        if not wheel.hub:
             wheel.hub = Hub()
-        if not hasattr(wheel, "tyre"):
+        if not wheel.tyre:
             wheel.tyre = Tyre()
         return wheel
 
