@@ -1,28 +1,8 @@
 import datetime
-import typing
 from dataclasses import dataclass, field
-from typing import Optional, get_origin, Union
+from typing import Union
 
 from enum import Enum
-
-
-# the __init__ allows to create BikeData @dataclass with not specifying all arguments
-# trying to access not specified argument of instance of class will result in attribute error
-@dataclass
-class BikeData:
-    def __init__(self, *args, **kwargs):
-        counter = 0
-        args_counter = 0
-        while args_counter < len(args):
-            current_attr_name = list(self.__annotations__.keys())[counter]
-            if current_attr_name in kwargs.keys():
-                self.__setattr__(current_attr_name, kwargs.pop(current_attr_name))
-            else:
-                self.__setattr__(current_attr_name, args[args_counter])
-                args_counter += 1
-            counter += 1
-        for arg, value in kwargs.items():
-            self.__setattr__(arg, value)
 
 
 class SuspensionType(Enum):
@@ -52,75 +32,86 @@ class ISCGStandard(Enum):
     ISCG05 = "ISCG05"
 
 
-class Usage(BikeData):
+@dataclass
+class Usage:
     hours: datetime.time = field(default=0)
     distance: float = field(default=0)
     races: int = field(default=0)
 
 
-class Geometry(BikeData):
-    top_tube_length: Optional[int]
-    head_tube_angle: Optional[Union[int, set]]
-    head_tube_length: Optional[int]
-    seat_tube_angle: Optional[Union[int, set]]
-    seat_tube_length: Optional[int]
-    bottom_bracket_height: Optional[Union[int, set]]
-    bottom_bracket_drop: Optional[Union[int, set]]
-    chainstay_length: Optional[int]
-    wheelbase: Optional[int]
-    standover: Optional[int]
-    reach: Optional[int]
-    stack: Optional[int]
+@dataclass
+class Geometry:
+    top_tube_length: int = field(default=None)
+    head_tube_angle: Union[int, set] = field(default=None)
+    head_tube_length: int = field(default=None)
+    seat_tube_angle: Union[int, set] = field(default=None)
+    seat_tube_length: int = field(default=None)
+    bottom_bracket_height: Union[int, set] = field(default=None)
+    bottom_bracket_drop: Union[int, set] = field(default=None)
+    chainstay_length: int = field(default=None)
+    wheelbase: int = field(default=None)
+    standover: int = field(default=None)
+    reach: int = field(default=None)
+    stack: int = field(default=None)
 
 
-class Component(BikeData):
-    brand: Optional[str]
-    model: Optional[str]
-    usage: Usage
+@dataclass
+class Component:
+    brand: str = field(default=None)
+    model: str = field(default=None)
+    usage: Usage = field(default=None)
 
 
+@dataclass
 class Frame(Component):
-    model_year: Optional[int]
-    size: Optional[str]
-    dropout: Optional[int]
-    travel: Optional[int]
-    head_tube: Optional[HeadsetStandard]
-    iscg_tabs: Optional[ISCGStandard]
+    model_year: int = field(default=None)
+    size: str = field(default=None)
+    dropout: int = field(default=None)
+    travel: int = field(default=None)
+    head_tube: HeadsetStandard = field(default=None)
+    iscg_tabs: ISCGStandard = field(default=None)
 
 
+@dataclass
 class Shock(Component):
-    length: Optional[int]
-    suspension_type: Optional[SuspensionType]
+    length: int = field(default=None)
+    suspension_type: SuspensionType = field(default=None)
 
 
+@dataclass
 class Fork(Component):
-    travel: Optional[int]
-    dropout: Optional[int]
-    offset: Optional[int]
+    travel: int = field(default=None)
+    dropout: int = field(default=None)
+    offset: int = field(default=None)
 
 
+@dataclass
 class Handlebars(Component):
-    width: Optional[int]
-    diameter: Optional[int]
+    width: int = field(default=None)
+    diameter: int = field(default=None)
 
 
+@dataclass
 class Stem(Component):
-    length: Optional[int]
-    rise: Optional[int]
-    diameter: Optional[int]
+    length: int = field(default=None)
+    rise: int = field(default=None)
+    diameter: int = field(default=None)
 
 
+@dataclass
 class Headset(Component):
-    standard: Optional[HeadsetStandard]
+    standard: HeadsetStandard = field(default=None)
 
 
+@dataclass
 class Grips(Component):
     pass
 
 
+@dataclass
 class BreakDisc(Component):
-    centerlock: Optional[bool]
-    diameter: Optional[int]
+    centerlock: bool = field(default=None)
+    _diameter: int = field(default=None)
 
     @property
     def diameter(self):
@@ -134,143 +125,169 @@ class BreakDisc(Component):
             raise ValueError
 
 
+@dataclass
 class Pads(Component):
-    compound: Optional[str]
+    compound: str = field(default=None)
 
 
+@dataclass
 class Break(Component):
     pass
 
 
+@dataclass
 class VBreak(Break):
     pass
 
 
+@dataclass
 class DiscBreak(Break):
-    disc: BreakDisc
-    pads: Pads
+    disc: BreakDisc = field(default=None)
+    pads: Pads = field(default=None)
 
 
+@dataclass
 class WheelSize(Enum):
     SIXTEEN = "16\""
     TWENTY = "20\""
     TWENTY_FOUR = "24\""
     TWENTY_SIX = "26\""
-    TWENTY_SEVEN = "27,5\"_650B"
+    TWENTY_SEVEN = "27,5\""
     TWENTY_NINE = "29\""
-    MULLET = "mullet_mixed"
+    MULLET = "mullet"
+    TWENTY_NINE_MULLET = "29\"/mullet"
 
 
+@dataclass
 class Rim(Component):
-    spoke_count: Optional[int]
-    size: Optional[WheelSize]
+    spoke_count: int = field(default=None)
+    size: WheelSize = field(default=None)
 
 
+@dataclass
 class Hub(Component):
-    holes_count: Optional[int]
-    boost: Optional[bool]
+    holes_count: int = field(default=None)
+    boost: bool = field(default=None)
 
 
+@dataclass
 class Tyre(Component):
-    width: Optional[float]
-    casing: Optional[str]
-    compound: Optional[str]
-    size: Optional[WheelSize]
+    width: float = field(default=None)
+    casing: str = field(default=None)
+    compound: str = field(default=None)
+    size: WheelSize = field(default=None)
 
 
+@dataclass
 class Wheel(Component):
-    rim: Rim
-    hub: Hub
-    tyre: Tyre
-    size: Optional[WheelSize]
+    rim: Rim = field(default=None)
+    hub: Hub = field(default=None)
+    tyre: Tyre = field(default=None)
+    size: WheelSize = field(default=None)
 
 
+@dataclass
 class Wheels(Component):
-    size: Optional[WheelSize]
-    front_wheel: Wheel
-    rear_wheel: Wheel
+    _size: WheelSize = field(default=None)
+    front_wheel: Wheel = field(default=None)
+    rear_wheel: Wheel = field(default=None)
 
     @property
     def size(self):
-        return self.size
+        return self._size
 
     @size.setter
     def size(self, value: WheelSize):
+        self._size = value
         if value == WheelSize.MULLET:
             self.front_wheel.size = WheelSize.TWENTY_NINE
             self.rear_wheel.size = WheelSize.TWENTY_SEVEN
+        elif value == WheelSize.TWENTY_NINE_MULLET:
+            self.front_wheel.size = WheelSize.TWENTY_NINE
+            self.rear_wheel.size = WheelSize.TWENTY_NINE_MULLET
         else:
             self.front_wheel.size = value
             self.rear_wheel.size = value
 
 
+@dataclass
 class BottomBracket(Component):
-    standard = Optional[BottomBracketStandard]
+    standard: BottomBracketStandard = field(default=None)
 
 
+@dataclass
 class Cranks(Component):
-    length: Optional[int]
-    boost: Optional[bool]
+    length: int = field(default=None)
+    boost: bool = field(default=None)
 
 
+@dataclass
 class Pedals(Component):
     pass
 
 
+@dataclass
 class Chainguide(Component):
-    mounting: Optional[str]
+    mounting: str = field(default=None)
 
 
+@dataclass
 class Chainrings(Component):
-    number_of_chainrings: Optional[int]
-    tooth_numbers: Optional[list]
-    offset: Optional[int]
+    number_of_chainrings: int = field(default=None)
+    tooth_numbers: list = field(default=None)
+    offset: int = field(default=None)
 
 
+@dataclass
 class Cassette(Component):
-    speeds: Optional[int]
-    tooth_range: Optional[str]  # might be divided into low and high with int values
+    speeds: int = field(default=None)
+    tooth_range: str = field(default=None)  # might be divided into low and high with int values
 
 
+@dataclass
 class Derailleur(Component):
-    speeds: Optional[int]
+    speeds: int = field(default=None)
 
 
+@dataclass
 class Chain(Component):
-    speeds_compatibility: Optional[int]
+    speeds_compatibility: int = field(default=None)
 
 
+@dataclass
 class Saddle(Component):
     pass
 
 
+@dataclass
 class Seatpost(Component):
-    telescopic: Optional[bool]
-    diameter: Optional[float]
-    travel: Optional[int]
+    telescopic: bool = field(default=None)
+    diameter: float = field(default=None)
+    travel: int = field(default=None)
 
 
-class BikeComponents(BikeData):
-    frame: Frame
-    shock: Shock
-    fork: Fork
-    handlebars: Handlebars
-    stem: Stem
-    headset: Headset
-    grips: Grips
-    front_break: Break
-    rear_break: Break
-    wheels: Wheels
-    bottom_bracket: BottomBracket
-    cranks: Cranks
-    pedals: Pedals
-    chainguide: Chainguide
-    chainring: Chainrings
-    cassette: Cassette
-    derailleur: Derailleur
-    chain: Chain
-    saddle: Saddle
-    seatpost: Seatpost
+@dataclass
+class BikeComponents:
+    frame: Frame = field(default=None)
+    shock: Shock = field(default=None)
+    fork: Fork = field(default=None)
+    handlebars: Handlebars = field(default=None)
+    stem: Stem = field(default=None)
+    headset: Headset = field(default=None)
+    grips: Grips = field(default=None)
+    front_break: Break = field(default=None)
+    rear_break: Break = field(default=None)
+    wheels: Wheels = field(default=None)
+    bottom_bracket: BottomBracket = field(default=None)
+    cranks: Cranks = field(default=None)
+    pedals: Pedals = field(default=None)
+    chainguide: Chainguide = field(default=None)
+    chainring: Chainrings = field(default=None)
+    cassette: Cassette = field(default=None)
+    derailleur: Derailleur = field(default=None)
+    chain: Chain = field(default=None)
+    saddle: Saddle = field(default=None)
+    seatpost: Seatpost = field(default=None)
 
 
 class PressureUnits(Enum):
@@ -279,39 +296,42 @@ class PressureUnits(Enum):
 
 
 class Pressure:
-    value: Optional[int]
-    units: Optional[PressureUnits]
+    value: int = field(default=None)
+    units: PressureUnits = field(default=None)
 
 
-class SuspensionSetup(BikeData):
-    pressure: Optional[Pressure]
-    fast_compression: Optional[int]
-    low_compression: Optional[int]
-    fast_rebound: Optional[int]
-    low_rebound: Optional[int]
+@dataclass
+class SuspensionSetup:
+    pressure: Pressure = field(default=None)
+    fast_compression: int = field(default=None)
+    low_compression: int = field(default=None)
+    fast_rebound: int = field(default=None)
+    low_rebound: int = field(default=None)
 
 
-class BikeSetup(BikeData):
-    front_tyre: Optional[Pressure]
-    rear_tyre: Optional[Pressure]
-    fork: SuspensionSetup
-    shock: SuspensionSetup
-    stem_height: Optional[int]
-    saddle_height: Optional[int]
-    brake_levers_angle: Optional[int]
-    chain_length: Optional[int]
-    chainline: Optional[int]
+@dataclass
+class BikeSetup:
+    front_tyre: Pressure = field(default=None)
+    rear_tyre: Pressure = field(default=None)
+    fork: SuspensionSetup = field(default=None)
+    shock: SuspensionSetup = field(default=None)
+    stem_height: int = field(default=None)
+    saddle_height: int = field(default=None)
+    brake_levers_angle: int = field(default=None)
+    chain_length: int = field(default=None)
+    chainline: int = field(default=None)
 
 
-class Bike(BikeData):
+@dataclass
+class Bike:
     # TODO: generate ID of bike
     users_name: str = field(default=None)
     brand: str = field(default=None)
     model: str = field(default=None)
     model_year: str = field(default=None)
     purchase_date: datetime.time = field(default=datetime.datetime.now())
-    total_usage: Usage
-    geometry: Geometry
-    components: BikeComponents
-    setup: BikeSetup
+    total_usage: Usage = field(default=None)
+    geometry: Geometry = field(default=None)
+    components: BikeComponents = field(default=None)
+    setup: BikeSetup = field(default=None)
     weight: int = field(default=None)  # TODO: find weight module
